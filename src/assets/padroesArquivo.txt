@@ -1,0 +1,1 @@
+A codificação do arquivo deve ser no padrão ANSI

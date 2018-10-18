@@ -1,0 +1,22 @@
+<div class="item">
+  <div class="controles mw-100 float-sm-left ml-1">
+    <app-upload-button (upload)="changeListener($event)"></app-upload-button>
+  </div>
+  <div *ngIf="original.length > 0" class="controles mw-100 float-sm-left ml-1">
+      <app-tipos (selecionouTipo)="selecionouTipo($event)"></app-tipos>
+  </div>
+</div>
+
+
+<app-resumo [resumo]="resumo"></app-resumo>
+
+<div *ngIf="original.length > 0" class="itens ml-1">
+  <div class="item">
+    <app-datas (mudoumes)="mudouFiltro($event) "></app-datas>
+  </div>
+
+  <div class="item"><h5>Operações Finalizadas </h5></div>
+  <div *ngFor="let item of itemsAsObservable | async; let i = index" class="card" style="width: 18rem;">
+    <app-item-dashboard [item]="item" ></app-item-dashboard>
+  </div>
+</div>

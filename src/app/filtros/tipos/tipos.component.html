@@ -1,0 +1,17 @@
+<div class="btn-group">
+    <button type="button" (click)="selecionou($event.target.value)" 
+    value="TODOS" 
+    [class.btn-light]="tipoSelecionado!='TODOS'" 
+    [class.btn-secondary]="tipoSelecionado=='TODOS'" 
+    class="btn">Todos</button>
+    <button type="button" (click)="selecionou($event.target.value)" 
+    [class.btn-light]="tipoSelecionado!='SWING_TRADE'" 
+    [class.btn-secondary]="tipoSelecionado=='SWING_TRADE'" 
+    value="SWING_TRADE" 
+    class="btn">SwingTrade</button>
+    <button type="button" (click)="selecionou($event.target.value)" 
+    [class.btn-light]="tipoSelecionado!='OPCOES'" 
+    [class.btn-secondary]="tipoSelecionado=='OPCOES'" 
+    value="OPCOES" 
+    class="btn">Opcoes</button>
+</div>

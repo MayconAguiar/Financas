@@ -1,0 +1,5 @@
+Criar um app para Calcular Imposto
+Ler csv
+Permitir selecionar um mês a partir dos registros lidos no csv
+
+Filtrar as operacoes daquele mês
