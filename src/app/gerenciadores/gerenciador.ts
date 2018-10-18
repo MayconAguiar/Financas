@@ -16,7 +16,6 @@ export class Gerenciador {
     }
 
     obtenha() {
-
         const chaves = Object.keys(this.datasPorAtivo).sort((a, b) => a < b ? -1 : 1);
 
         const that = this;
@@ -27,19 +26,15 @@ export class Gerenciador {
             const datas = that.datasPorAtivo[chave].sort((a, b) => a < b ? -1 : 1);
 
             datas.forEach(data => {
-                // debugger;
-                const naoExisteSaidaDaAnterior = itemdashboard.entrada !== undefined
-                && itemdashboard.entrada.existeValor()
-                && !itemdashboard.saida.existeValor();
 
-                if (naoExisteSaidaDaAnterior) {
-                    const saidasDoDia = this.venda.filter(x => data === x.Data(this.formatoData) && x.empresa === empresa);
+                if (!itemdashboard.estaFinalizado) {
+                    const saidasDoDia = this.venda.filter(x => data === x.data && x.empresa === empresa);
                     itemdashboard.processeSaida(saidasDoDia);
                 } else {
                     const itemDashBoard = new ItemDashboard();
 
-                    const entradasDoDia = this.compra.filter(x => data === x.Data(this.formatoData) && x.empresa === empresa);
-                    const saidasDoDia = this.venda.filter(x => data === x.Data(this.formatoData) && x.empresa === empresa);
+                    const entradasDoDia = this.compra.filter(x => data === x.data && x.empresa === empresa);
+                    const saidasDoDia = this.venda.filter(x => data === x.data && x.empresa === empresa);
 
                     itemDashBoard.processe(entradasDoDia, saidasDoDia, itemdashboard);
                     itemdashboard = itemDashBoard;
@@ -68,7 +63,7 @@ export class Gerenciador {
         const operacoes = this.compra.concat(this.venda);
 
         operacoes.forEach(element => {
-            const data = element.data.format(this.formatoData);
+            const data = element.data;
             if (this.idsAtivos.indexOf(element.empresa) === -1) {
                 this.idsAtivos.push(element.empresa);
                 this.datasPorAtivo[element.empresa] = [];

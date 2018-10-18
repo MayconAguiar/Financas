@@ -4,14 +4,14 @@
     <h5 class="card-text">{{ dicionarioTipos[item.tipo] }}</h5>
     <div class="card-text"><h5>Entrada</h5></div>  
     <div class="card-text">Natureza: {{ item.entrada.papeis[0].natureza }}</div>  
-    <div class="card-text">Data: {{ item.entrada.Data() }}</div>  
+    <div class="card-text">Data: {{ item.entrada.data | date: 'dd/MM/yyyy'}}</div>  
     <div class="card-text">Quantidade: {{ item.entrada.quantidade }}</div>  
     <div class="card-text">Valor Médio: {{ item.entrada.ValorMedio()| currencyFormat  }}</div>  
   </div>
   <div *ngIf="item.entrada.existeValor()">
     <div class="card-text"><h5>Saída</h5></div>  
     <!-- <div *ngIf="item.saida.papeis.count !== 0" class="card-text">Natureza: {{ item.saida.papeis[0].natureza }}</div> -->
-    <div class="card-text">Data: {{ item.saida.Data() }}</div>  
+    <div class="card-text">Data: {{ item.saida.data | date: 'dd/MM/yyyy' }}</div>  
     <div class="card-text">Quantidade: {{ item.saida.quantidade }}</div>  
     <div class="card-text">Valor Médio: {{ item.saida.ValorMedio()| currencyFormat }}</div>  
   </div>

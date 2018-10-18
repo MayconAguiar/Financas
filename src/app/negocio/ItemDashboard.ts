@@ -13,6 +13,7 @@ export class ItemDashboard {
     public saldo: Saldo;
     public tipo: Tipos;
     public resumo: ResumoIndividual;
+    public estaFinalizado = true;
 
 
     constructor() {
@@ -28,8 +29,20 @@ export class ItemDashboard {
     }
 
     processeSaida(operacao1: ItemArquivo[]) {
-        this.saida = new EntradaOuSaida(operacao1);
+        const operacoesAnteriores = this.saida.operacao;
+        this.saida = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
         this.atualizeValores();
+    }
+
+    credite(operacao1: ItemArquivo[]) {
+        const operacoesAnteriores = this.entrada.operacao;
+        this.entrada = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
+        this.atualizeValores();
+    }
+
+    debite(operacao1: ItemArquivo[]) {
+        const operacoesAnteriores = this.saida.operacao;
+        this.saida = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
     }
 
     valorMedio() {
@@ -51,6 +64,9 @@ export class ItemDashboard {
 
         this.tipo = this.entrada.tipo;
         this.resumo = new ResumoIndividual(this);
+
+        this.estaFinalizado = this.entrada.existeValor() && this.saida.existeValor()
+        && (this.entrada.quantidade === this.saida.quantidade);
     }
 
     private inverta() {

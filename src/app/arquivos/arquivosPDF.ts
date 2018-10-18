@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscriber } from 'rxjs/Subscriber';
 import { PDFJSStatic } from 'pdfjs-dist';
-import * as moment from 'moment';
 import { Tipos } from '../tipos.enum';
 import { Taxas } from '../negocio/taxas';
 import { ItemArquivo } from './itemArquivo';
@@ -184,17 +183,18 @@ export class ArquivosPDF {
             }
 
             itemarquivo.taxas = new Taxas(itemarquivo);
-             // if(operacao.empresa =='BRASIL') {
-                 novaLista.push(itemarquivo);
-             // }
+            if (itemarquivo.empresa === 'VALE') {
+                novaLista.push(itemarquivo);
+            }
 
         }
         return novaLista;
     }
 
     private obtenhaDataFormatada(value) {
-        moment.locale('pt-br');
-        return moment(value.substr(0, 10) , 'DD/MM/YYYY');
+        const itensData = value.substr(0, 10).split('/');
+        const mes = Number(itensData[1]) - 1;
+        return new Date(Number(itensData[2]), mes, Number(itensData[0]));
     }
 
     private adicioneLinha(listaItens: any[], listaDeLinhas: any[]) {

@@ -1,13 +1,12 @@
 import { Papel } from './Papel';
 import { ItemArquivo } from '../arquivos/itemArquivo';
 import { Tipos } from '../tipos.enum';
-import moment = require('moment');
 
 export class EntradaOuSaida {
 
     public papeis: Papel[] = [];
     public operacao: ItemArquivo[];
-    public data: moment.Moment;
+    public data: Date;
     public tipo: Tipos;
     public count = 0;
     private valor = 0;
@@ -37,7 +36,7 @@ export class EntradaOuSaida {
         return this.valor ===  0 ? 0 : this.valor / this.count;
     }
 
-    public Data() {
-        return this.data == null ? '' : this.data.format('DD/MM/YYYY');
-    }
+    // public Data() {
+    //     return this.data == null ? '' : this.data.format('DD/MM/YYYY');
+    // }
 }
