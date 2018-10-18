@@ -35,14 +35,19 @@ export class ItemDashboard {
     }
 
     credite(operacao1: ItemArquivo[]) {
-        const operacoesAnteriores = this.entrada.operacao;
-        this.entrada = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
-        this.atualizeValores();
+        if (operacao1.length > 0) {
+            // const operacoesAnteriores = this.entrada.operacao === undefined ? [] : this.entrada.operacao;
+            this.entrada = new EntradaOuSaida(operacao1);
+            // this.entrada = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
+            this.atualizeValores();
+        }
     }
 
     debite(operacao1: ItemArquivo[]) {
-        const operacoesAnteriores = this.saida.operacao;
-        this.saida = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
+        if (operacao1.length > 0) {
+            const operacoesAnteriores = this.saida.operacao;
+            this.saida = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
+        }
     }
 
     valorMedio() {
@@ -50,23 +55,23 @@ export class ItemDashboard {
     }
 
     private atualizeValores() {
-        const quantidadeEntrada = this.operacaoAnterior.saldo.diferenca + this.entrada.quantidade;
+        //const quantidadeEntrada = this.operacaoAnterior.saldo.diferenca + this.entrada.quantidade;
 
         // vai terminar a operação vendido;
         // garante que as entradas sempre serão maiores
-        if (quantidadeEntrada < this.saida.quantidade) {
-            this.inverta();
-        }
+        // if (quantidadeEntrada < this.saida.quantidade) {
+        //     this.inverta();
+        // }
 
         // calcular o saldo
-        this.saldo.diferenca = Math.abs(quantidadeEntrada - this.saida.quantidade);
+        // this.saldo.diferenca = Math.abs(quantidadeEntrada - this.saida.quantidade);
         this.saldo.valorMedio = this.entrada.ValorMedio();
 
         this.tipo = this.entrada.tipo;
         this.resumo = new ResumoIndividual(this);
 
-        this.estaFinalizado = this.entrada.existeValor() && this.saida.existeValor()
-        && (this.entrada.quantidade === this.saida.quantidade);
+        // this.estaFinalizado = this.entrada.existeValor() && this.saida.existeValor()
+        // && (this.entrada.quantidade === this.saida.quantidade);
     }
 
     private inverta() {

@@ -10,24 +10,30 @@ export class ContaCorrente {
     // situacaoSaldo: SituacaoSaldo;
     itemAtual: ItemDashboard;
 
-    constructor(entradas: ItemArquivo[], saidas: ItemArquivo[]) {
+    // constructor(entradas: ItemArquivo[], saidas: ItemArquivo[]) {
+    constructor() {
         // estes valores do contrutor é que será a base para identificar se inicia comprado ou vendido;
         // quem começa será quem tem a quantidade maior;
-        let quantidadeEntradas = 0;
-        entradas.forEach(x => quantidadeEntradas += x.quantidade);
+        // let quantidadeEntradas = 0;
+        // entradas.forEach(x => quantidadeEntradas += x.quantidade);
 
-        let quantidadeSaidas = 0;
-        saidas.forEach(x => quantidadeSaidas += x.quantidade);
+        // let quantidadeSaidas = 0;
+        // saidas.forEach(x => quantidadeSaidas += x.quantidade);
 
         // this.situacaoSaldo = quantidadeEntradas > quantidadeSaidas ? SituacaoSaldo.COMPRADO : SituacaoSaldo.VENDIDO;
-        this.inicieNovoItem(entradas, saidas);
+        // this.inicieNovoItem(entradas, saidas);
 
     }
 
 
     // estes valores de entradas e saidas são somente de um dia
     // teremos que controlar o saldo para gerar novos itemDashboard
-    processe(entradas: ItemArquivo[], saidas: ItemArquivo[]) {
+    public processe(entradas: ItemArquivo[], saidas: ItemArquivo[]) {
+
+        if (entradas.length === 0 && saidas.length === 0) {
+            return this.itensDashboard;
+        }
+
         if (this.itemAtual === undefined) {
             // primeira vez
             this.inicieNovoItem(entradas, saidas);
@@ -44,6 +50,8 @@ export class ContaCorrente {
         } else {
             this.inicieNovoItem(entradas, saidas);
         }
+
+        return this.itensDashboard;
     }
 
     // private zerou(entradas: ItemArquivo[], saidas: ItemArquivo[]) {
