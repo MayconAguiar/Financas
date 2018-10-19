@@ -1,6 +1,7 @@
 
 import { ItemDashboard } from '../negocio/ItemDashboard';
 import { ItemArquivo } from '../arquivos/itemArquivo';
+import { Nova } from './processadores/nova';
 
 export class Gerenciador {
     private compra: ItemArquivo[] = [];
@@ -8,7 +9,6 @@ export class Gerenciador {
     private resultado: ItemDashboard[] = [];
     private idsAtivos = [];
     private datasPorAtivo = [];
-    private formatoData = 'YYYYMMDD';
 
     constructor(itens: ItemArquivo[] ) {
         this.separeCompraDaVenda(itens);
@@ -22,26 +22,19 @@ export class Gerenciador {
         chaves.forEach(chave => {
 
             const empresa = chave;
-            let itemdashboard = new ItemDashboard();
+            // let itemdashboard = new ItemDashboard();
             const datas = that.datasPorAtivo[chave].sort((a, b) => a < b ? -1 : 1);
+            const compras = this.compra.filter(x => x.empresa === empresa);
+            const vendas = this.venda.filter(x => x.empresa === empresa);
+            const processador = new Nova();
 
-            datas.forEach(data => {
+            processador.entradas = compras;
+            processador.saidas = vendas;
+            processador.datas = datas;
 
-                if (!itemdashboard.estaFinalizado) {
-                    const saidasDoDia = this.venda.filter(x => data === x.data && x.empresa === empresa);
-                    itemdashboard.processeSaida(saidasDoDia);
-                } else {
-                    const itemDashBoard = new ItemDashboard();
+            processador.execute();
 
-                    const entradasDoDia = this.compra.filter(x => data === x.data && x.empresa === empresa);
-                    const saidasDoDia = this.venda.filter(x => data === x.data && x.empresa === empresa);
-
-                    itemDashBoard.processe(entradasDoDia, saidasDoDia, itemdashboard);
-                    itemdashboard = itemDashBoard;
-                    this.resultado.push(itemDashBoard);
-                }
-            });
-
+            this.resultado = this.resultado.concat(processador.itensDashboard);
         });
 
         // console.log(this.resultado);

@@ -35,7 +35,6 @@ export class DashboardComponent implements OnInit {
     this.mesSelecionado = mes;
     this.items =  this.original.filter(x => x.saida.data !== undefined && x.saida.data.getMonth() === Number(mes));
     console.log(this.items);
-    debugger;
     this.resumoBehavior.next(new Resumo(this.items));
     this.itensBehavior.next(this.items);
   }

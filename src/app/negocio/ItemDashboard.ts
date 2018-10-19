@@ -8,8 +8,8 @@ import { ResumoIndividual } from './ResumoIndividual';
 
 export class ItemDashboard {
     private operacaoAnterior: ItemDashboard;
-    public entrada: EntradaOuSaida;
-    public saida: EntradaOuSaida;
+    public entrada = new EntradaOuSaida([]);
+    public saida = new EntradaOuSaida([]);
     public saldo: Saldo;
     public tipo: Tipos;
     public resumo: ResumoIndividual;
@@ -45,8 +45,8 @@ export class ItemDashboard {
 
     debite(operacao1: ItemArquivo[]) {
         if (operacao1.length > 0) {
-            const operacoesAnteriores = this.saida.operacao;
-            this.saida = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
+            this.saida = new EntradaOuSaida(operacao1);
+            this.atualizeValores();
         }
     }
 
