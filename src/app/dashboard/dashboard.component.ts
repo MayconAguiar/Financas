@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
 
     const operacoes = new GerenciadorDeArquivos(files);
     operacoes.processe().subscribe(x => {
+      debugger;
       this.items = new Gerenciador(x).obtenha();
       this.original = this.items;
       this.itensBehavior.next(this.items);

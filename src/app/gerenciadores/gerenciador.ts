@@ -20,8 +20,9 @@ export class Gerenciador {
 
         const that = this;
         chaves.forEach(chave => {
-
+            debugger;
             const empresa = chave;
+
             // let itemdashboard = new ItemDashboard();
             const datas = that.datasPorAtivo[chave].sort((a, b) => a < b ? -1 : 1);
             const compras = this.compra.filter(x => x.empresa === empresa);

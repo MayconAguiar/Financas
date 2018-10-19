@@ -5,7 +5,7 @@ import { Tipos } from '../tipos.enum';
 export class EntradaOuSaida {
 
     public papeis: Papel[] = [];
-    public operacao: ItemArquivo[];
+    public operacao: ItemArquivo[] = [];
     public data: Date;
     public tipo: Tipos;
     public count = 0;
@@ -13,9 +13,8 @@ export class EntradaOuSaida {
 
     quantidade = 0;
 
-    constructor(operacao: ItemArquivo[]) {
-        this.operacao = operacao;
-        operacao.forEach(x => {
+    constructor(itensArquivo: ItemArquivo[]) {
+        itensArquivo.forEach(x => {
             const papel = new Papel();
             papel.natureza = x.natureza;
             papel.empresa = x.empresa;
@@ -26,6 +25,24 @@ export class EntradaOuSaida {
             this.valor += x.preco;
             this.tipo = x.tipo;
         });
+
+        this.operacao = itensArquivo;
+    }
+
+    concat(itensArquivo: ItemArquivo[]) {
+        itensArquivo.forEach(x => {
+            const papel = new Papel();
+            papel.natureza = x.natureza;
+            papel.empresa = x.empresa;
+            this.data = x.data;
+            this.papeis.push(papel);
+            this.quantidade += x.quantidade;
+            this.count ++;
+            this.valor += x.preco;
+            this.tipo = x.tipo;
+        });
+
+        this.operacao = this.operacao.concat(itensArquivo);
     }
 
     public existeValor() {

@@ -1,0 +1,3 @@
+npm i -g angular-cli-ghpages
+ng build --prod --base-href https://mayconaguiar.github.io/Financas/
+ngh

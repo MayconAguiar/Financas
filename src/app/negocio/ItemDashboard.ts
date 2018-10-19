@@ -36,8 +36,10 @@ export class ItemDashboard {
 
     credite(operacao1: ItemArquivo[]) {
         if (operacao1.length > 0) {
-            // const operacoesAnteriores = this.entrada.operacao === undefined ? [] : this.entrada.operacao;
-            this.entrada = new EntradaOuSaida(operacao1);
+            // this.entrada.operacao = this.entrada.operacao.concat(operacao1);
+
+            // this.entrada = new EntradaOuSaida(operacao1);
+            this.entrada.concat(operacao1);
             // this.entrada = new EntradaOuSaida(operacoesAnteriores.concat(operacao1));
             this.atualizeValores();
         }
@@ -45,7 +47,9 @@ export class ItemDashboard {
 
     debite(operacao1: ItemArquivo[]) {
         if (operacao1.length > 0) {
-            this.saida = new EntradaOuSaida(operacao1);
+            // this.saida.operacao = this.saida.operacao.concat(operacao1);
+            // this.saida = new EntradaOuSaida(operacao1);
+            this.saida.concat(operacao1);
             this.atualizeValores();
         }
     }
