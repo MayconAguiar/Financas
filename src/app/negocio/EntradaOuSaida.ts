@@ -5,28 +5,16 @@ import { Tipos } from '../tipos.enum';
 export class EntradaOuSaida {
 
     public papeis: Papel[] = [];
-    public operacao: ItemArquivo[] = [];
+    public itemArquivo: ItemArquivo[] = [];
     public data: Date;
     public tipo: Tipos;
     public count = 0;
-    private valor = 0;
+    public valor = 0;
 
     quantidade = 0;
 
-    constructor(itensArquivo: ItemArquivo[]) {
-        itensArquivo.forEach(x => {
-            const papel = new Papel();
-            papel.natureza = x.natureza;
-            papel.empresa = x.empresa;
-            this.data = x.data;
-            this.papeis.push(papel);
-            this.quantidade += x.quantidade;
-            this.count ++;
-            this.valor += x.preco;
-            this.tipo = x.tipo;
-        });
-
-        this.operacao = itensArquivo;
+    constructor() {
+        
     }
 
     concat(itensArquivo: ItemArquivo[]) {
@@ -42,18 +30,55 @@ export class EntradaOuSaida {
             this.tipo = x.tipo;
         });
 
-        this.operacao = this.operacao.concat(itensArquivo);
+        this.itemArquivo = this.itemArquivo.concat(itensArquivo);
+    }
+
+    inicie(itensArquivo: ItemArquivo[]){
+        itensArquivo.forEach(x => {
+            const papel = new Papel();
+            papel.natureza = x.natureza;
+            papel.empresa = x.empresa;
+            this.data = x.data;
+            this.papeis.push(papel);
+            this.quantidade += x.quantidade;
+            this.count ++;
+            this.valor += x.preco;
+            this.tipo = x.tipo;
+        });
+
+        this.itemArquivo = itensArquivo;
+    }
+
+    teste (x: ItemArquivo) {
+        const papel = new Papel();
+        papel.natureza = x.natureza;
+        papel.empresa = x.empresa;
+        this.data = x.data;
+        this.papeis.push(papel);
+        this.quantidade = x.quantidade;
+        this.count = x.count;
+        this.valor = x.preco;
+        this.tipo = x.tipo;
+        this.itemArquivo.push(x);
     }
 
     public existeValor() {
-        return this.operacao.length > 0;
+        return this.itemArquivo.length > 0;
     }
 
     public ValorMedio() {
         return this.valor ===  0 ? 0 : this.valor / this.count;
     }
 
-    // public Data() {
-    //     return this.data == null ? '' : this.data.format('DD/MM/YYYY');
+    // public Split(count: number) {
+    //     const novasOperacoes = this.operacao.slice(0, count);
+    //     // deleta os elementos das novas operacoes
+    //     this.operacao = this.operacao.splice(0, count);
+    //     this.inicie(this.operacao);
+
+    //     const entradaOuSaida = new EntradaOuSaida();
+    //     entradaOuSaida.inicie(novasOperacoes);
+        
+    //     return entradaOuSaida;
     // }
 }

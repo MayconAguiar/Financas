@@ -68,6 +68,23 @@ export class Processador {
         return quantidade;
     }
 
+    protected ObtenhaListaDeIndicesNaQuantidade(lista, quantidade) {
+        let quantidadeParcial = 0;
+        let ilistaParcial = 0;
+
+        for (let index = 0; index < lista.operacao.length; index++) {
+            const element = lista.operacao[index];
+
+            quantidadeParcial += element.quantidade;
+            ilistaParcial ++;
+            if (quantidadeParcial >= quantidade) {
+                break;
+            } 
+        }
+
+        return ilistaParcial;
+    }
+
     private naturezaEhDeCompra() {
         return this.entradas[0].natureza === 'C';
     }

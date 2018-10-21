@@ -183,9 +183,9 @@ export class ArquivosPDF {
             }
 
             itemarquivo.taxas = new Taxas(itemarquivo);
-            if (itemarquivo.empresa === 'VALE') {
+            //if (itemarquivo.empresa === 'PORTOBELLO') {
                 novaLista.push(itemarquivo);
-            }
+            //}
 
         }
         return novaLista;
