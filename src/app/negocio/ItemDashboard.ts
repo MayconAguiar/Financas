@@ -64,7 +64,7 @@ export class ItemDashboard {
                 //operacao.data = this.operacaoAnterior.entrada.data;
                 operacao.quantidade = diferenca;
                 //operacao.empresa = this.operacaoAnterior.entrada.
-                operacao.preco = this.operacaoAnterior.entrada.ValorMedio();
+                operacao.preco = this.operacaoAnterior.entrada.valor;
                 this.operacaoAnterior.entrada.quantidade -= diferenca;
                 this.operacaoAnterior.resumo = new ResumoIndividual(this.operacaoAnterior);
             }

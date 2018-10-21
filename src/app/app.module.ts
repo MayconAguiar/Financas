@@ -14,7 +14,6 @@ import { ItemResumoComponent } from './item-resumo/item-resumo.component';
 import { CurrencyFormatPipe } from './currency-format.pipe';
 import localeBR from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { Dashboard2Component } from './dashboard2/dashboard2.component';
 
 registerLocaleData(localeBR);
 
@@ -28,8 +27,7 @@ registerLocaleData(localeBR);
     TiposComponent,
     UploadButtonComponent,
     ItemResumoComponent,
-    CurrencyFormatPipe,
-    Dashboard2Component
+    CurrencyFormatPipe
   ],
   imports: [
     BrowserModule, MomentModule

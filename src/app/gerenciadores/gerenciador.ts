@@ -1,7 +1,6 @@
 
 import { ItemDashboard } from '../negocio/ItemDashboard';
 import { ItemArquivo } from '../arquivos/itemArquivo';
-import { Nova } from './processadores/nova';
 import { ItemTeste } from '../negocio/ItemTeste';
 
 export class Gerenciador {
