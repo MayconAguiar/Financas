@@ -14,9 +14,16 @@
   <div class="item">
     <app-datas (mudoumes)="mudouFiltro($event) "></app-datas>
   </div>
-
-  <div class="item"><h5>Operações Finalizadas </h5></div>
-  <div *ngFor="let item of itemsAsObservable | async; let i = index" class="card" style="width: 18rem;">
-    <app-item-dashboard [item]="item" ></app-item-dashboard>
+  <div *ngIf="(itemsAbertoAsObservable | async)?.length>0" class="item">
+    <div class="item"><h5>Operações em aberto </h5></div>
+    <div *ngFor="let item of itemsAbertoAsObservable | async; let i = index" class="card" style="width: 18rem;">
+      <app-item-dashboard [item]="item" ></app-item-dashboard>
+    </div>
+  </div>
+  <div *ngIf="(itemsAsObservable | async)?.length>0" class="item">
+    <div class="item"><h5>Operações Finalizadas </h5></div>
+    <div *ngFor="let item of itemsAsObservable | async; let i = index" class="card" style="width: 18rem;">
+      <app-item-dashboard [item]="item" ></app-item-dashboard>
+    </div>
   </div>
 </div>

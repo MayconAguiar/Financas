@@ -63,7 +63,7 @@ export class EntradaOuSaida {
     }
 
     public existeValor() {
-        return this.itemArquivo.length > 0;
+        return this.valor > 0;
     }
 
     public ValorMedio() {

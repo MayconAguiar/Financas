@@ -14,6 +14,7 @@ import { ItemResumoComponent } from './item-resumo/item-resumo.component';
 import { CurrencyFormatPipe } from './currency-format.pipe';
 import localeBR from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeBR);
 
@@ -30,7 +31,7 @@ registerLocaleData(localeBR);
     CurrencyFormatPipe
   ],
   imports: [
-    BrowserModule, MomentModule
+    BrowserModule, MomentModule, HttpClientModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]

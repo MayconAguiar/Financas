@@ -53,7 +53,8 @@ export class Gerenciador {
         });
 
         // console.log(this.resultado);
-        return this.resultado.filter(x => x.entrada.quantidade > 0 && x.saida.quantidade > 0);
+        // return this.resultado.filter(x => x.entrada.quantidade > 0 && x.saida.quantidade > 0);
+        return this.resultado.filter(x => x.entrada.quantidade > 0);
     }
 
     // private ajuste() {

@@ -1,3 +1,6 @@
 npm i -g angular-cli-ghpages
 ng build --prod --base-href https://mayconaguiar.github.io/Financas/
-ngh
+ngh --no-silent
+git config --global 
+
+git remote set-url origin https://{username}:{password}@github.com/{username}/project.git
