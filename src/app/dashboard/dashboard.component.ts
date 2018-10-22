@@ -80,19 +80,19 @@ export class DashboardComponent implements OnInit {
         
         console.log(this.items);
         this.resumoBehavior.next(new Resumo(this.items));
-        this.atualizeItensAtuais().subscribe(x => {
-          if(x == this.itemsAberto.length){
-            this.itensAbertoBehavior.next(this.itemsAberto);
-          }
-        });
+        // this.atualizeItensAtuais().subscribe(x => {
+        //   if(x == this.itemsAberto.length){
+        //     this.itensAbertoBehavior.next(this.itemsAberto);
+        //   }
+        // });
       });
 
-      // this.http.get("https://enclout-yahoo-finance.p.mashape.com/show.json?auth_token=&text=AAPL%2C+MSFT%2C+GOOG", 
-      // {headers:  
-      //   { 'X-Mashape-Key': 'clxG1w5n2CmshJD6wq2FnAcd7rqkp1xcMSZjsnQ5vyte8bsI5T' ,
-      //     'Accept': 'application/json' }
-      // })
-      // .subscribe((result: any) => console.log(result.status, result.headers, result.body));
+      this.http.get("https://enclout-yahoo-finance.p.mashape.com/show.json?auth_token=&text=AAPL%2C+MSFT%2C+GOOG", 
+      {headers:  
+        { 'X-Mashape-Key': 'clxG1w5n2CmshJD6wq2FnAcd7rqkp1xcMSZjsnQ5vyte8bsI5T' ,
+          'Accept': 'application/json' }
+      })
+      .subscribe((result: any) => console.log(result.status, result.headers, result.body));
     }
 
     atualizeItensAtuais() {
