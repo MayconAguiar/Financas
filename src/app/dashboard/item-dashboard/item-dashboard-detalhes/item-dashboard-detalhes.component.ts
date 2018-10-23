@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResumoIndividual } from '../negocio/ResumoIndividual';
+import { ResumoIndividual } from '../../../negocio/dashboard/ResumoIndividual';
 
 @Component({
   selector: 'app-item-dashboard-detalhes',
@@ -7,9 +7,9 @@ import { ResumoIndividual } from '../negocio/ResumoIndividual';
   styleUrls: ['./item-dashboard-detalhes.component.scss']
 })
 export class ItemDashboardDetalhesComponent implements OnInit {
-  
+
   exibirDetalhes = false;
-  
+
   @Input() item: ResumoIndividual;
   @Input() exibirDetalhesGeral: boolean;
 

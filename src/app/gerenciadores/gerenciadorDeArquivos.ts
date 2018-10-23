@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Observable';
-import { ArquivosPDF } from '../arquivos/arquivosPDF';
-import { ItemArquivo } from '../arquivos/itemArquivo';
-
+import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
+import { ArquivosPDF } from '../importa-arquivo/arquivos/arquivosPDF';
 
 export class GerenciadorDeArquivos {
 

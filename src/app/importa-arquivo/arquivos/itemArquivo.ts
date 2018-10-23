@@ -1,5 +1,5 @@
-import { Taxas } from '../negocio/taxas';
-import { Tipos } from '../tipos.enum';
+import { Taxas } from '../../negocio/dashboard/taxas';
+import { Tipos } from '../../tipos.enum';
 
 export class ItemArquivo {
     codigo = 0;
@@ -7,7 +7,7 @@ export class ItemArquivo {
     data: Date;
     quantidade = 0;
     preco = 0;
-    natureza= '';
+    natureza = '';
     taxas: Taxas;
     tipo: Tipos;
     count =0;
@@ -31,8 +31,8 @@ export class ItemArquivo {
         if (item.quantidade > 0) {
             this.quantidade += item.quantidade;
             this.preco += item.preco;
-            this.preco = this.preco /2;
-            this.count = 1;        
+            this.preco = this.preco / 2;
+            this.count = 1;
         }
     }
 }

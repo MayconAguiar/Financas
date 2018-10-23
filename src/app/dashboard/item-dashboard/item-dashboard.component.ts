@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ItemDashboard } from '../negocio/ItemDashboard';
-import { Tipos } from '../tipos.enum';
+import { ItemDashboard } from '../../negocio/dashboard/ItemDashboard';
+import { Tipos } from '../../tipos.enum';
 
 @Component({
   selector: 'app-item-dashboard',
@@ -11,7 +11,7 @@ export class ItemDashboardComponent implements OnInit {
 
   @Input() item: ItemDashboard;
   @Input() exibirDetalhesGeral: boolean;
-  
+
   dicionarioTipos = [];
 
   constructor() {

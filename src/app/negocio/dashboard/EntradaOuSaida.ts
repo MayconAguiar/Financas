@@ -1,6 +1,6 @@
 import { Papel } from './Papel';
-import { ItemArquivo } from '../arquivos/itemArquivo';
-import { Tipos } from '../tipos.enum';
+import { Tipos } from '../../tipos.enum';
+import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
 
 export class EntradaOuSaida {
 
@@ -14,7 +14,7 @@ export class EntradaOuSaida {
     quantidade = 0;
 
     constructor() {
-        
+
     }
 
     concat(itensArquivo: ItemArquivo[]) {
@@ -33,7 +33,7 @@ export class EntradaOuSaida {
         this.itemArquivo = this.itemArquivo.concat(itensArquivo);
     }
 
-    inicie(itensArquivo: ItemArquivo[]){
+    inicie(itensArquivo: ItemArquivo[]) {
         itensArquivo.forEach(x => {
             const papel = new Papel();
             papel.natureza = x.natureza;
@@ -69,16 +69,4 @@ export class EntradaOuSaida {
     public ValorMedio() {
         return this.valor ===  0 ? 0 : this.valor / this.count;
     }
-
-    // public Split(count: number) {
-    //     const novasOperacoes = this.operacao.slice(0, count);
-    //     // deleta os elementos das novas operacoes
-    //     this.operacao = this.operacao.splice(0, count);
-    //     this.inicie(this.operacao);
-
-    //     const entradaOuSaida = new EntradaOuSaida();
-    //     entradaOuSaida.inicie(novasOperacoes);
-        
-    //     return entradaOuSaida;
-    // }
 }

@@ -1,9 +1,9 @@
 
 import { Saldo } from './Saldo';
 import { EntradaOuSaida } from './EntradaOuSaida';
-import { ItemArquivo } from '../arquivos/itemArquivo';
-import { Tipos } from '../tipos.enum';
+import { Tipos } from '../../tipos.enum';
 import { ResumoIndividual } from './ResumoIndividual';
+import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
 
 
 export class ItemDashboard {
@@ -36,7 +36,7 @@ export class ItemDashboard {
 
     crediteTeste(operacao1: ItemArquivo) {
         const diferenca = this.obtenhaDiferencaDaEntrada();
-        
+
         if (diferenca.quantidade > 0){
             diferenca.concat(operacao1);
             this.entrada.teste(diferenca);

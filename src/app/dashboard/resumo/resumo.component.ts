@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Resumo } from '../negocio/Resumo';
 import { Observable } from 'rxjs/Observable';
+import { Resumo } from '../../negocio/dashboard/Resumo';
 
 @Component({
   selector: 'app-resumo',
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class ResumoComponent implements OnInit {
 
   @Input() resumo: Observable<Resumo>;
-  
+
   constructor() { }
 
   ngOnInit() {

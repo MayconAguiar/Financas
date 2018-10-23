@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs/Observable';
 import { Subscriber } from 'rxjs/Subscriber';
 import { PDFJSStatic } from 'pdfjs-dist';
-import { Tipos } from '../tipos.enum';
-import { Taxas } from '../negocio/taxas';
 import { ItemArquivo } from './itemArquivo';
+import { Tipos } from '../../tipos.enum';
+import { Taxas } from '../../negocio/dashboard/taxas';
 declare var require: any;
 
 export class ArquivosPDF {
@@ -183,9 +183,9 @@ export class ArquivosPDF {
             }
 
             itemarquivo.taxas = new Taxas(itemarquivo);
-            //if (itemarquivo.empresa === 'PORTOBELLO') {
+            // if (itemarquivo.empresa === 'PORTOBELLO') {
                 novaLista.push(itemarquivo);
-            //}
+            // }
 
         }
         return novaLista;
