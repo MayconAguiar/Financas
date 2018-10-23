@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import {MomentModule} from 'angular2-moment/moment.module';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +19,10 @@ import { ItemEmAbertoDashboardComponent } from './item-em-aberto-dashboard/item-
 import { TipoItemDashboardComponent } from './filtros/tipo-item-dashboard/tipo-item-dashboard.component';
 import { ItemDashboardDetalhesComponent } from './item-dashboard-detalhes/item-dashboard-detalhes.component';
 import { GeralComponent } from './filtros/geral/geral.component';
+import { FirebaseConfig } from './../environments/firebase.config';
+import { AngularFireModule } from 'angularfire2/index';
+
+AngularFireModule.initializeApp(FirebaseConfig);
 
 registerLocaleData(localeBR);
 
@@ -40,7 +43,7 @@ registerLocaleData(localeBR);
     GeralComponent
   ],
   imports: [
-    BrowserModule, MomentModule, HttpClientModule
+    BrowserModule, HttpClientModule
   ],
   providers: [FinanceService, { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
