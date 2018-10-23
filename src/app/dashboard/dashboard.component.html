@@ -4,6 +4,8 @@
   </div>
   <div *ngIf="original.length > 0" class="controles mw-100 float-sm-left ml-1">
       <app-tipos (selecionouTipo)="selecionouTipo($event)"></app-tipos>
+      <app-tipo-item-dashboard (selecionouTipo)="selecionouTipoItemDashboard($event)"></app-tipo-item-dashboard>
+      <app-geral (exibir)="exibirDetalhes($event)"></app-geral>
   </div>
 </div>
 
@@ -16,14 +18,14 @@
   </div>
   <div *ngIf="(itemsAbertoAsObservable | async)?.length>0" class="item">
     <div class="item"><h5>Operações em aberto </h5></div>
-    <div *ngFor="let item of itemsAbertoAsObservable | async; let i = index" class="card" style="width: 18rem;">
-      <app-item-dashboard [item]="item" ></app-item-dashboard>
+    <div *ngFor="let item of itemsAbertoAsObservable | async; let i = index" class="card emaberto" style="width: 18rem;">
+      <app-item-em-aberto-dashboard [item]="item" ></app-item-em-aberto-dashboard>
     </div>
   </div>
   <div *ngIf="(itemsAsObservable | async)?.length>0" class="item">
     <div class="item"><h5>Operações Finalizadas </h5></div>
     <div *ngFor="let item of itemsAsObservable | async; let i = index" class="card" style="width: 18rem;">
-      <app-item-dashboard [item]="item" ></app-item-dashboard>
+      <app-item-dashboard [item]="item" [exibirDetalhesGeral]="exibirDetalhesGeral" ></app-item-dashboard>
     </div>
   </div>
 </div>

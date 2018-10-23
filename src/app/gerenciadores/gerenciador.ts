@@ -57,30 +57,6 @@ export class Gerenciador {
         return this.resultado.filter(x => x.entrada.quantidade > 0);
     }
 
-    // private ajuste() {
-    //     // this.saida = this.saida.sort((a,b) =>  a > b ? -1 : 1);
-    //     // this.resultado.sort()
-    //     let saldo = 0;
-    //     let valorMedio = 0;
-    //     let quantidade = 0;
-    //     let count = 0;
-
-    //     for (let index = this.resultado.length; index > 0; index--) {
-    //         const element = this.resultado[index];
-    //         quantidade += element.entrada.quantidade;
-    //         const estaFinalizado = quantidade >= element.saida.quantidade;
-
-    //         if (!estaFinalizado) {
-    //             valorMedio +=element.entrada.ValorMedio();
-    //             count ++;
-    //         } else {
-    //             if (quantidade
-    //         }
-            
-
-    //     }
-    // }
-
     private Obtenha(lista: ItemArquivo[]) {
         const arquivo = new ItemArquivo();
 

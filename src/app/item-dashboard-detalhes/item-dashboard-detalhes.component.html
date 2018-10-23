@@ -1,0 +1,13 @@
+<div *ngIf="item !== undefined"class="card-body">
+    <h4 class="card-title" (click)="detalhar()" >Taxas: {{ item.taxas | currencyFormat }}</h4>
+    <div *ngIf="exibirDetalhesGeral || exibirDetalhes">
+      <div class="card-text">Imposto Retido: {{ item.impostoRetido | currencyFormat }}</div>  
+      <!-- <div class="card-text">Lucro ou Prejuizo: {{ item.lucroOuPrejuizo | currencyFormat }}</div>   -->
+      <div class="card-text">Taxa de liquidação: {{ item.taxaDeLiquidacao | currencyFormat }}</div>  
+      <div class="card-text">Emolumentos: {{ item.emolumentos | currencyFormat }}</div>
+      <div class="card-text">Iss: {{ item.iss | currencyFormat }}</div>
+      <div class="card-text">Quantidade de Operações: {{ item.count }}</div>
+      <div class="card-text">Corretagem: {{ item.corretagem | currencyFormat }}</div>
+    </div>
+  </div>
+  

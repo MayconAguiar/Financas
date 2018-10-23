@@ -1,0 +1,17 @@
+<div class="btn-group">
+  <button type="button" (click)="selecionou($event.target.value)" 
+  [class.btn-light]="tipoSelecionado!='TODOS'" 
+  [class.btn-secondary]="tipoSelecionado=='TODOS'" 
+  value="TODOS" 
+  class="btn">Todos</button>
+  <button type="button" (click)="selecionou($event.target.value)" 
+  value="FECHADA" 
+  [class.btn-light]="tipoSelecionado!='FECHADA'" 
+  [class.btn-secondary]="tipoSelecionado=='FECHADA'" 
+  class="btn">Fechada</button>
+  <button type="button" (click)="selecionou($event.target.value)" 
+  [class.btn-light]="tipoSelecionado!='EM_ABERTO'" 
+  [class.btn-secondary]="tipoSelecionado=='EM_ABERTO'" 
+  value="EM_ABERTO" 
+  class="btn">Em aberto</button>
+</div>

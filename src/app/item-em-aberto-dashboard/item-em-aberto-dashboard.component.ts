@@ -3,15 +3,14 @@ import { ItemDashboard } from '../negocio/ItemDashboard';
 import { Tipos } from '../tipos.enum';
 
 @Component({
-  selector: 'app-item-dashboard',
-  templateUrl: './item-dashboard.component.html',
-  styleUrls: ['./item-dashboard.component.scss']
+  selector: 'app-item-em-aberto-dashboard',
+  templateUrl: './item-em-aberto-dashboard.component.html',
+  styleUrls: ['./item-em-aberto-dashboard.component.scss']
 })
-export class ItemDashboardComponent implements OnInit {
+
+export class ItemEmAbertoDashboardComponent implements OnInit {
 
   @Input() item: ItemDashboard;
-  @Input() exibirDetalhesGeral: boolean;
-  
   dicionarioTipos = [];
 
   constructor() {
@@ -22,5 +21,4 @@ export class ItemDashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

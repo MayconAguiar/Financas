@@ -2,7 +2,6 @@
   <div *ngIf="item.entrada.existeValor()">
     <h4 class="card-title">{{ item.entrada.papeis[0].empresa }}</h4>
     <h5 class="card-text">{{ dicionarioTipos[item.tipo] }}</h5>
-    <h5 class="card-text">{{ item.resumo.lucroOuPrejuizo| currencyFormat }}</h5>
     <div class="card-text"><h5>Entrada</h5></div>  
     <div class="card-text">Natureza: {{ item.entrada.papeis[0].natureza }}</div>  
     <div class="card-text">Data: {{ item.entrada.data | date: 'dd/MM/yyyy'}}</div>  
@@ -10,11 +9,12 @@
     <div class="card-text">Valor Médio: {{ item.entrada.ValorMedio()| currencyFormat  }}</div>  
   </div>
   <div *ngIf="item.saida.existeValor()">
-    <div class="card-text"><h5>Saída</h5></div>  
+    <div class="card-text"><h5>Em aberto</h5></div>  
     <!-- <div *ngIf="item.saida.papeis.count !== 0" class="card-text">Natureza: {{ item.saida.papeis[0].natureza }}</div> -->
     <div class="card-text">Data: {{ item.saida.data | date: 'dd/MM/yyyy' }}</div>  
     <div class="card-text">Quantidade: {{ item.saida.quantidade }}</div>  
-    <div class="card-text">Valor Médio: {{ item.saida.ValorMedio()| currencyFormat }}</div>
-    <app-item-dashboard-detalhes [item]="item.resumo" [exibirDetalhesGeral]="exibirDetalhesGeral"></app-item-dashboard-detalhes>
+    <div class="card-text">Valor Médio: {{ item.saida.ValorMedio()| currencyFormat }}</div>  
+    <div class="card-text">Lucro: {{ (item.saida.ValorMedio()  / item.entrada.ValorMedio()) - 1 | percent }}</div>  
+
   </div>
 </div>

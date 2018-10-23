@@ -6,9 +6,13 @@ export class ResumoIndividual  {
     impostoDevido = 0;
     impostoRetido = 0;
     impostoAPagar = 0;
-    corretagem = 0.80;
+    taxaDeLiquidacao = 0;
+    emolumentos = 0;
+    iss = 0;
+    corretagem = 0;
     lucroOuPrejuizo = 0;
     totalVenda = 0;
+    count = 0;
 
     item: ItemDashboard;
 
@@ -23,13 +27,15 @@ export class ResumoIndividual  {
             this.totalVenda = this.item.saida.ValorMedio() * this.item.saida.quantidade;
             this.lucroOuPrejuizo = this.totalVenda - totalEntrada;
             const valorDaOperacao = (totalEntrada + this.totalVenda);
-            const taxaDeLiquidacao = valorDaOperacao * (0.0275 / 100);
-            const emolumentos = valorDaOperacao * 0.00004829;
-            const iss = this.corretagem * (9.65 / 100);
+            this.taxaDeLiquidacao = valorDaOperacao * (0.0275 / 100);
+            this.emolumentos = valorDaOperacao * 0.00004829;
             const iprfretido = (this.totalVenda * 0.00005);
+            this.count = this.item.entrada.count + this.item.saida.count;
+            this.corretagem = this.count * 0.80;
+            this.iss = this.corretagem * (9.65 / 100);
             this.impostoRetido = this.lucroOuPrejuizo > 0 && iprfretido > 1? iprfretido : 0;
 
-            this.taxas = taxaDeLiquidacao + emolumentos + iss + (this.corretagem * this.item.entrada.count);
+            this.taxas = this.taxaDeLiquidacao + this.emolumentos + this.iss + this.corretagem;
         }
     }
 }

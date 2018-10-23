@@ -15,6 +15,11 @@ import { CurrencyFormatPipe } from './currency-format.pipe';
 import localeBR from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FinanceService } from './finance.service';
+import { ItemEmAbertoDashboardComponent } from './item-em-aberto-dashboard/item-em-aberto-dashboard.component';
+import { TipoItemDashboardComponent } from './filtros/tipo-item-dashboard/tipo-item-dashboard.component';
+import { ItemDashboardDetalhesComponent } from './item-dashboard-detalhes/item-dashboard-detalhes.component';
+import { GeralComponent } from './filtros/geral/geral.component';
 
 registerLocaleData(localeBR);
 
@@ -28,12 +33,16 @@ registerLocaleData(localeBR);
     TiposComponent,
     UploadButtonComponent,
     ItemResumoComponent,
-    CurrencyFormatPipe
+    CurrencyFormatPipe,
+    ItemEmAbertoDashboardComponent,
+    TipoItemDashboardComponent,
+    ItemDashboardDetalhesComponent,
+    GeralComponent
   ],
   imports: [
     BrowserModule, MomentModule, HttpClientModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [FinanceService, { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
