@@ -3,7 +3,7 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { PDFJSStatic } from 'pdfjs-dist';
 import { ItemArquivo } from './itemArquivo';
 import { Tipos } from '../../tipos.enum';
-import { Taxas } from '../../negocio/dashboard/taxas';
+import { Taxas } from '../../negocio/taxas';
 declare var require: any;
 
 export class ArquivosPDF {

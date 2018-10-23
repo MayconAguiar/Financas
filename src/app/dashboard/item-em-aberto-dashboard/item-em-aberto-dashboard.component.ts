@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ItemDashboard } from '../../negocio/dashboard/ItemDashboard';
+import { ItemDashboard } from '../../negocio/ItemDashboard';
 import { Tipos } from '../../tipos.enum';
 
 @Component({

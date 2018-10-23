@@ -13,3 +13,14 @@
 .input-label-inline label {    
     float: left;
 }
+
+.form-control-range {
+    width: 54% !important;
+}
+
+@media screen and (min-width:480px)
+{   
+    .form-control-range {
+        width: 77% !important;
+    }
+}

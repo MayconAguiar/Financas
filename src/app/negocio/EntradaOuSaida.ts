@@ -1,6 +1,6 @@
 import { Papel } from './Papel';
-import { Tipos } from '../../tipos.enum';
-import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+import { Tipos } from '../tipos.enum';
+import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
 
 export class EntradaOuSaida {
 

@@ -1,5 +1,5 @@
 
-import { ItemDashboard } from '../negocio/dashboard/ItemDashboard';
+import { ItemDashboard } from '../negocio/ItemDashboard';
 import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
 
 

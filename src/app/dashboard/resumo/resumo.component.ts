@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Resumo } from '../../negocio/dashboard/Resumo';
+import { Resumo } from '../../negocio/Resumo';
 
 @Component({
   selector: 'app-resumo',

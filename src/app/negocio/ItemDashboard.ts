@@ -1,9 +1,9 @@
 
 import { Saldo } from './Saldo';
 import { EntradaOuSaida } from './EntradaOuSaida';
-import { Tipos } from '../../tipos.enum';
+import { Tipos } from '../tipos.enum';
 import { ResumoIndividual } from './ResumoIndividual';
-import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
 
 
 export class ItemDashboard {

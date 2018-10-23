@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResumoIndividual } from '../../negocio/dashboard/ResumoIndividual';
+import { ResumoIndividual } from '../../negocio/ResumoIndividual';
 
 
 @Component({

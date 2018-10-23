@@ -1,4 +1,4 @@
-import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
 
 export class Taxas {
 

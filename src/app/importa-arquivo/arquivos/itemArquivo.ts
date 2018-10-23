@@ -1,4 +1,4 @@
-import { Taxas } from '../../negocio/dashboard/taxas';
+import { Taxas } from '../../negocio/taxas';
 import { Tipos } from '../../tipos.enum';
 
 export class ItemArquivo {

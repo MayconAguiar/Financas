@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ItemDashboard } from '../../negocio/dashboard/ItemDashboard';
+import { ItemDashboard } from '../../negocio/ItemDashboard';
 import { GerenciadorDeArquivos } from '../../gerenciadores/gerenciadorDeArquivos';
 import { Gerenciador } from '../../gerenciadores/gerenciador';
-import { Resumo } from '../../negocio/dashboard/Resumo';
+import { Resumo } from '../../negocio/Resumo';
 import { Tipos } from '../../tipos.enum';
 import {Observable, BehaviorSubject} from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
