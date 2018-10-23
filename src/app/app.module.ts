@@ -21,6 +21,7 @@ import { ItemDashboardDetalhesComponent } from './item-dashboard-detalhes/item-d
 import { GeralComponent } from './filtros/geral/geral.component';
 import { FirebaseConfig } from './../environments/firebase.config';
 import { AngularFireModule } from 'angularfire2/index';
+import { AppRoutingModule } from './app-routing.module';
 
 AngularFireModule.initializeApp(FirebaseConfig);
 
@@ -43,7 +44,7 @@ registerLocaleData(localeBR);
     GeralComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, AppRoutingModule
   ],
   providers: [FinanceService, { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
