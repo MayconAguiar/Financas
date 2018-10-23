@@ -13,7 +13,6 @@ import { AngularFireModule } from 'angularfire2/index';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ImportaArquivoModule } from './importa-arquivo/importa-arquivo.module';
-// import { UploadButtonComponent } from './upload-button/upload-button.component';
 
 AngularFireModule.initializeApp(FirebaseConfig);
 
@@ -21,8 +20,7 @@ registerLocaleData(localeBR);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CurrencyFormatPipe
+    AppComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, DashboardModule, ImportaArquivoModule

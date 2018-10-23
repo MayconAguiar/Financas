@@ -11,7 +11,10 @@ import { TiposComponent } from './filtros/tipos/tipos.component';
 import { ItemDashboardComponent } from './item-dashboard/item-dashboard.component';
 import { ResumoComponent } from './resumo/resumo.component';
 import { UploadButtonComponent } from '../upload-button/upload-button.component';
-import { ItemDashboardDetalhesComponent } from './item-dashboard/item-dashboard-detalhes/item-dashboard-detalhes.component';
+import { CurrencyFormatPipe } from '../currency-format.pipe';
+import { ItemDashboardDetalhesComponent } from './item-dashboard-detalhes/item-dashboard-detalhes.component';
+import { ItemResumoComponent } from './item-resumo/item-resumo.component';
+import { ItemEmAbertoDashboardComponent } from './item-em-aberto-dashboard/item-em-aberto-dashboard.component';
 
 @NgModule({
   imports: [
@@ -20,6 +23,8 @@ import { ItemDashboardDetalhesComponent } from './item-dashboard/item-dashboard-
   exports: [
 
   ],
+  
+  // componente
   declarations: [
     DashboardComponent,
     DatasComponent,
@@ -29,7 +34,10 @@ import { ItemDashboardDetalhesComponent } from './item-dashboard/item-dashboard-
     ItemDashboardComponent,
     ResumoComponent,
     UploadButtonComponent,
-    ItemDashboardDetalhesComponent
+    ItemDashboardDetalhesComponent,
+    CurrencyFormatPipe,
+    ItemResumoComponent,
+    ItemEmAbertoDashboardComponent
   ],
   providers: [ AngularFireDatabase ]
 })
