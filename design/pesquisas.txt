@@ -1,0 +1,2 @@
+inclusão firebase
+https://braziljs.org/blog/simples-aplicacao-real-time-com-angular-4-e-firebase-parte-2/
