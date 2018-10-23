@@ -2,15 +2,16 @@
   <div class="controles mw-100 float-sm-left ml-1">
     <app-upload-button (upload)="changeListener($event)"></app-upload-button>
   </div>
-  <div *ngIf="original.length > 0" class="controles mw-100 float-sm-left ml-1">
-      <app-tipos (selecionouTipo)="selecionouTipo($event)"></app-tipos>
-      <app-tipo-item-dashboard (selecionouTipo)="selecionouTipoItemDashboard($event)"></app-tipo-item-dashboard>
-      <app-geral (exibir)="exibirDetalhes($event)"></app-geral>
+  <div *ngIf="original.length > 0" class="filtros">
+      <app-tipos class="filtro" (selecionouTipo)="selecionouTipo($event)"></app-tipos>
+      <app-tipo-item-dashboard  class="filtro" (selecionouTipo)="selecionouTipoItemDashboard($event)"></app-tipo-item-dashboard>
+      <app-geral  class="filtro" (exibir)="exibirDetalhes($event)"></app-geral>
   </div>
 </div>
 
-
-<app-resumo [resumo]="resumo"></app-resumo>
+<div class="item">
+  <app-resumo [resumo]="resumo"></app-resumo>
+</div>
 
 <div *ngIf="original.length > 0" class="itens ml-1">
   <div class="item">

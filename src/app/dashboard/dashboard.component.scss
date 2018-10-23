@@ -20,3 +20,41 @@ h5{
 .emaberto {
     height: 370px;
 }
+
+.filtros {
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.filtro {
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media screen and (min-width:480px)
+{   
+    .filtro {        
+        width: 50%;        
+    }
+    
+ 
+}
+
+
+
+/*IPAD DEVICE*/
+@media screen and (min-width:700px)
+{  
+    .filtro {        
+        width: 33%;        
+    }
+}
+
+@media screen and (min-width:1000px)
+{   
+  
+}
