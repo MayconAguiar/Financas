@@ -1,0 +1,14 @@
+<h1> Cotações Atuais</h1>
+<form #f="ngForm">
+
+<div *ngFor="let item of itemsAsObservable | async; let i = index">
+    <div class="item">
+        <app-cotacao-atual-item [item]="item" ></app-cotacao-atual-item>
+    </div>
+</div>
+
+<button (click)="adicione()" >Adicionar</button>
+
+<button>Atualizar</button>
+
+</form>

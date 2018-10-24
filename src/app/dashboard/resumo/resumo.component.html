@@ -1,8 +1,13 @@
 <div *ngIf="resumo| async as item" class="item">
     <app-item-resumo [descricao]="'Vendas'" [valor]="item.totalVenda" ></app-item-resumo>
-    <app-item-resumo [descricao]="'Taxas'" [valor]="item.taxas" ></app-item-resumo>
+    <app-item-resumo [descricao]="'Taxa de Liquidação'" [valor]="item.taxaDeLiquidacao" ></app-item-resumo>
+    <app-item-resumo [descricao]="'ISS'" [valor]="item.iss" ></app-item-resumo>
+    <app-item-resumo [descricao]="'Emolumentos'" [valor]="item.emolumentos" ></app-item-resumo>
+    <app-item-resumo [descricao]="'Corretagem'" [valor]="item.corretagem" ></app-item-resumo>
+    <app-item-resumo [descricao]="'Total de Taxas'" [valor]="item.taxas" ></app-item-resumo>
     <app-item-resumo [descricao]="'Lucro Prejuizo Bruto'" [valor]="item.lucroOuPrejuizo" ></app-item-resumo>
     <app-item-resumo [descricao]="'Lucro Prejuizo Líquido'" [valor]="item.lucroLiquido" ></app-item-resumo>
     <app-item-resumo [descricao]="'Imposto Retido'" [valor]="item.impostoRetido" ></app-item-resumo>
     <app-item-resumo [descricao]="'Imposto Devido'" [valor]="item.impostoDevido" ></app-item-resumo>
+
 </div>

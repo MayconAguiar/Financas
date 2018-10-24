@@ -32,8 +32,8 @@ export class ResumoIndividual  {
             const iprfretido = (this.totalVenda * 0.00005);
             this.count = this.item.entrada.count + this.item.saida.count;
             this.corretagem = this.count * 0.80;
-            this.iss = this.corretagem * (9.65 / 100);
-            this.impostoRetido = this.lucroOuPrejuizo > 0 && iprfretido > 1? iprfretido : 0;
+            // this.iss = this.corretagem * (9.65 / 100);
+            // this.impostoRetido = this.lucroOuPrejuizo > 0 && iprfretido > 1? iprfretido : 0;
 
             this.taxas = this.taxaDeLiquidacao + this.emolumentos + this.iss + this.corretagem;
         }
