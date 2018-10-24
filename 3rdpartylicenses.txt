@@ -593,6 +593,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 MIT
 MIT
 
+@angular/forms@6.1.10
+MIT
+MIT
+
 @angular/router@6.1.10
 MIT
 MIT
