@@ -3,6 +3,9 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ItemAcao } from '../negocio/ItemAcao';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireList } from '@angular/fire/database/interfaces';
+
 
 @Component({
   selector: 'app-cotacao-atual',
@@ -11,23 +14,33 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CotacaoAtualComponent implements OnInit {
 
-  constructor() { }
-  
+  constructor(private angularFire: AngularFireDatabase) { }
+
   itemsAsObservable: Observable<ItemAcao[]>;
   itensBehavior = new BehaviorSubject<ItemAcao[]>([]);
   itens: ItemAcao[] = [];
+  itemNovo: ItemAcao;
 
   ngOnInit() {
     this.itemsAsObservable = this.itensBehavior.asObservable();
-  }
-
-  form_submit(f: NgForm) {
-    console.log(f.form.controls);
-    console.log('valor do controle nome: ' + f.form.controls.nome.value);
+    this.angularFire.list<ItemAcao>('CotacoesAtuais').valueChanges()
+    .subscribe(x => {
+      this.itens = x;
+      this.itensBehavior.next(this.itens);
+      },
+      erro => {},
+      () => console.log(this.itens));
   }
 
   adicione() {
-    this.itens.push(new ItemAcao());
+    this.itemNovo = new ItemAcao();
+    // this.itensBehavior.next(this.itens);
+  }
+
+  salvar() {
+    this.itens.push(this.itemNovo);
+    this.angularFire.list<ItemAcao>('CotacoesAtuais').push(this.itemNovo);
     this.itensBehavior.next(this.itens);
+    this.itemNovo = null;
   }
 }

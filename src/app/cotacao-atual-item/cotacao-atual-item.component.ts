@@ -11,9 +11,10 @@ import { Input } from '@angular/core';
 export class CotacaoAtualItemComponent implements OnInit {
 
   constructor() { }
-  
+
   @Input() item: ItemAcao;
-  
+  @Input() existente = true;
+
   ngOnInit() {
   }
 

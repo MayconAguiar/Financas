@@ -5,7 +5,7 @@ import { ImportaComponent } from './importa-arquivo/importa/importa.component';
 import { CotacaoAtualComponent } from './cotacao-atual/cotacao-atual.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/cotacaoatual', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'cotacaoatual', component: CotacaoAtualComponent}
 ];

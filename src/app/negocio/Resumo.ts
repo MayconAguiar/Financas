@@ -36,7 +36,9 @@ export class Resumo  {
         }
 
         this.lucroLiquido = this.lucroOuPrejuizo - this.taxas - this.impostoRetido;
-        this.impostoDevido = this.lucroLiquido > 0 ? this.lucroLiquido * 0.15 : 0;
+        if (this.totalVenda > 20000) {
+          this.impostoDevido = this.lucroLiquido > 0 ? this.lucroLiquido * 0.15 : 0;
+        }
     }
 
 }

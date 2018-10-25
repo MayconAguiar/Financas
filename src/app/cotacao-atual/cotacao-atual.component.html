@@ -7,8 +7,9 @@
     </div>
 </div>
 
-<button (click)="adicione()" >Adicionar</button>
-
-<button>Atualizar</button>
-
+<button *ngIf='itemNovo==null' (click)="adicione()" >Adicionar</button>
+<div *ngIf='itemNovo!=null' class="item">
+    <app-cotacao-atual-item [existente]=false [item]="itemNovo" ></app-cotacao-atual-item>
+    <button (click)="salvar()" >Salvar</button>
+</div>
 </form>
