@@ -1,15 +1,21 @@
 <h1> Cotações Atuais</h1>
 <form #f="ngForm">
 
-<div *ngFor="let item of itemsAsObservable | async; let i = index">
-    <div class="item">
-        <app-cotacao-atual-item [item]="item" ></app-cotacao-atual-item>
+<div *ngFor="let item of itens2 | async; let i = index;">
+    <div class="item" (click)="selecione(item)">
+        <app-cotacao-atual-item [desabilitarCodigo]=true [desabilitarValor]=true [item]="item" ></app-cotacao-atual-item>
     </div>
 </div>
 
-<button *ngIf='itemNovo==null' (click)="adicione()" >Adicionar</button>
-<div *ngIf='itemNovo!=null' class="item">
-    <app-cotacao-atual-item [existente]=false [item]="itemNovo" ></app-cotacao-atual-item>
+<button *ngIf="itemNovo==null && chaveSelecionada==''" (click)="adicione()" >Adicionar</button>
+<div *ngIf="itemNovo!=null"  class="item">
+    <app-cotacao-atual-item  [item]="itemNovo" ></app-cotacao-atual-item>
     <button (click)="salvar()" >Salvar</button>
+</div>
+
+<div *ngIf="chaveSelecionada!==''" class="item">
+    <app-cotacao-atual-item [desabilitarCodigo]=true [item]="itemUpdate" ></app-cotacao-atual-item>
+    <button (click)="update(itemUpdate)" >Salvar</button>
+    <button (click)="excluir()" >Excluir</button>
 </div>
 </form>

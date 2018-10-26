@@ -5,9 +5,10 @@ import { ImportaComponent } from './importa-arquivo/importa/importa.component';
 import { CotacaoAtualComponent } from './cotacao-atual/cotacao-atual.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/cotacaoatual', pathMatch: 'full' },
+  { path: '', redirectTo: '/importa', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'cotacaoatual', component: CotacaoAtualComponent}
+  { path: 'cotacaoatual', component: CotacaoAtualComponent},
+  { path: 'importa', component: ImportaComponent}
 ];
 
 @NgModule({

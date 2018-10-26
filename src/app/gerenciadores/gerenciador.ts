@@ -31,12 +31,12 @@ export class Gerenciador {
 
             datas.forEach(element => {
 
-                const itensEntrada = that.entrada.filter(x => x.data.toISOString() === element 
+                const itensEntrada = that.entrada.filter(x => x.data === element
                     && x.empresa === empresa);
 
                 const entradas  = this.Obtenha(itensEntrada);
 
-                const itensSaida = that.saida.filter(x => x.data.toISOString() === element 
+                const itensSaida = that.saida.filter(x => x.data === element
                     && x.empresa === empresa);
 
                 const saidas = this.Obtenha(itensSaida);
@@ -97,9 +97,9 @@ export class Gerenciador {
             if (this.idsAtivos.indexOf(element.empresa) === -1) {
                 this.idsAtivos.push(element.empresa);
                 this.datasPorAtivo[element.empresa] = [];
-                this.datasPorAtivo[element.empresa].push(data.toISOString());
-            } else if (this.datasPorAtivo[element.empresa].indexOf(data.toISOString()) === -1)  {
-                this.datasPorAtivo[element.empresa].push(data.toISOString());
+                this.datasPorAtivo[element.empresa].push(data);
+            } else if (this.datasPorAtivo[element.empresa].indexOf(data) === -1)  {
+                this.datasPorAtivo[element.empresa].push(data);
             }
         });
     }

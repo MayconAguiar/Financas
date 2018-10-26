@@ -6,10 +6,11 @@ export class EntradaOuSaida {
 
     public papeis: Papel[] = [];
     public itemArquivo: ItemArquivo[] = [];
-    public data: Date;
+    public data: string;
     public tipo: Tipos;
     public count = 0;
     public valor = 0;
+    private _date;
 
     quantidade = 0;
 
@@ -68,5 +69,17 @@ export class EntradaOuSaida {
 
     public ValorMedio() {
         return this.valor ===  0 ? 0 : this.valor / this.count;
+    }
+
+    public ObtenhaData() {
+      if (this._date === undefined && this.data !== undefined) {
+        // anomesdia
+        const dia = this.data.substr(6, 2);
+        const mes =  this.data.substr(4, 2);
+        const ano = this.data.substr(0, 4);
+        this._date = new Date( mes + '/' + dia + '/' + ano);
+      }
+
+      return this._date;
     }
 }

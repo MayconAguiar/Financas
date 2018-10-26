@@ -12,7 +12,7 @@ export class GerenciadorDeArquivos {
     }
 
     public processe() {
-        return new Observable<any>(observer => {
+        return new Observable<ItemArquivo[]>(observer => {
             const arquivosPdf = new ArquivosPDF();
 
             arquivosPdf.obtenhaLista(this.listaDeArquivos)

@@ -31,7 +31,6 @@ import { PipesModule } from '../pipes/pipes.module';
     TiposComponent,
     ItemDashboardComponent,
     ResumoComponent,
-    UploadButtonComponent,
     ItemDashboardDetalhesComponent,
     ItemResumoComponent,
     ItemEmAbertoDashboardComponent

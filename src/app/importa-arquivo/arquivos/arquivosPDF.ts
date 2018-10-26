@@ -182,7 +182,7 @@ export class ArquivosPDF {
                     break;
             }
 
-            itemarquivo.taxas = new Taxas(itemarquivo);
+            // itemarquivo.taxas = new Taxas new Taxas(itemarquivo);
             // if (itemarquivo.empresa === 'PORTOBELLO') {
                 novaLista.push(itemarquivo);
             // }
@@ -192,9 +192,9 @@ export class ArquivosPDF {
     }
 
     private obtenhaDataFormatada(value) {
+        // anomesdia
         const itensData = value.substr(0, 10).split('/');
-        const mes = Number(itensData[1]) - 1;
-        return new Date(Number(itensData[2]), mes, Number(itensData[0]));
+        return  itensData[2] + itensData[1] + itensData[0];
     }
 
     private adicioneLinha(listaItens: any[], listaDeLinhas: any[]) {

@@ -1,16 +1,16 @@
-import { Taxas } from '../../negocio/taxas';
+//import { Taxas } from '../../negocio/taxas';
 import { Tipos } from '../../tipos.enum';
 
 export class ItemArquivo {
     codigo = 0;
     empresa = '';
-    data: Date;
+    data: string;
     quantidade = 0;
     preco = 0;
     natureza = '';
-    taxas: Taxas;
+    // taxas: Taxas;
     tipo: Tipos;
-    count =0;
+    count = 0;
     origem;
 
     public obtenhaNovo() {

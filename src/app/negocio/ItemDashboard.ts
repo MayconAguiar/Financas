@@ -54,12 +54,12 @@ export class ItemDashboard {
 
     obtenhaDiferencaDaEntrada() {
         let operacao = new ItemArquivo();
-        
+
         if (this.operacaoAnterior !== undefined) {
-            
+
             if (this.operacaoAnterior.entrada.quantidade != this.operacaoAnterior.saida.quantidade) {
                 operacao = this.operacaoAnterior.entrada.itemArquivo[0].obtenhaNovo();
-                
+
                 const diferenca = this.operacaoAnterior.entrada.quantidade - this.operacaoAnterior.saida.quantidade;
                 //operacao.data = this.operacaoAnterior.entrada.data;
                 operacao.quantidade = diferenca;

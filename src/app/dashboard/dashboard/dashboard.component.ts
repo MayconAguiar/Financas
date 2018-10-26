@@ -9,6 +9,10 @@ import { HttpClient } from '@angular/common/http';
 import { Subscriber } from 'rxjs/Subscriber';
 import { TipoDashboard } from '../../tipo-dashboard.enum';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+import { ItemAcao } from '../../negocio/ItemAcao';
+import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,7 +20,7 @@ import { TipoDashboard } from '../../tipo-dashboard.enum';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private angularFire: AngularFireDatabase) { }
 
     itemsAsObservable: Observable<ItemDashboard[]>;
     itemsAbertoAsObservable: Observable<ItemDashboard[]>;
@@ -24,7 +28,8 @@ export class DashboardComponent implements OnInit {
     items: ItemDashboard[];
     itemsAberto: ItemDashboard[];
     original: ItemDashboard[] = [];
-    dicionarioDeAcoes = [];
+    // dicionarioDeAcoes = [];
+    valoresAtuais;
     exibirDetalhesGeral = false;
 
     mesSelecionado: 0;
@@ -37,20 +42,12 @@ export class DashboardComponent implements OnInit {
       this.itemsAsObservable = this.itensBehavior.asObservable();
       this.itemsAbertoAsObservable = this.itensAbertoBehavior.asObservable();
       this.resumo = this.resumoBehavior.asObservable();
-      this.dicionarioDeAcoes['BRASIL'] = ['bbas3.sa', '39.85'];
-      this.dicionarioDeAcoes['CVC'] = ['cvcb3.sa', '55'];
-      this.dicionarioDeAcoes['GERDAU'] = ['goau4.sa', '7.71'];
-      this.dicionarioDeAcoes['IRBBRASIL'] = ['irbr3.sa', '68.71'];
-      this.dicionarioDeAcoes['ITAUSA'] = ['itsa4.sa', '10.98'];
-      this.dicionarioDeAcoes['PORTOBELLO'] = ['ptbl3.sa', '4.85'];
-      this.dicionarioDeAcoes['RAIADROGASIL'] = ['radl3.sa', '66.80'];
-      this.dicionarioDeAcoes['ULTRAPAR'] = ['ugpa3.sa', '39.79'];
+      this.Inicie();
     }
 
     public mudouFiltro(mes) {
       this.mesSelecionado = mes;
-      this.items =  this.original.filter(x => x.saida.data !== undefined && x.saida.data.getMonth() === Number(mes));
-      console.log(this.items);
+      this.items =  this.original.filter(x => x.saida.ObtenhaData() !== undefined && x.saida.ObtenhaData().getMonth() === Number(mes));
       this.resumoBehavior.next(new Resumo(this.items));
       this.itensBehavior.next(this.items);
     }
@@ -91,34 +88,40 @@ export class DashboardComponent implements OnInit {
       }
     }
 
-    public changeListener(files: FileList) {
-
-      const operacoes = new GerenciadorDeArquivos(files);
-      operacoes.processe().subscribe(x => {
-
-        this.items = new Gerenciador(x).obtenha();
+    private Inicie() {
+      this.angularFire.list<ItemArquivo>('/ItensArquivo').valueChanges()
+      .subscribe(itens => {
+        debugger;
+        this.items = new Gerenciador(itens).obtenha();
 
         this.original = this.items;
 
-        this.itemsAberto =  this.original.filter(itemOriginal => itemOriginal.saida.data === undefined);
+        this.itemsAberto =  this.original.filter(itemOriginal => itemOriginal.saida.ObtenhaData() === undefined);
 
         this.itensBehavior.next(this.items);
 
         this.resumoBehavior.next(new Resumo(this.items));
 
-        this.atualizeItensAtuais().subscribe(itensAtuais => {
+        this.angularFire.list<ItemAcao>('/CotacoesAtuais').valueChanges()
+        .subscribe(valores => {
 
-          if (itensAtuais === this.itemsAberto.length) {
-             this.itensAbertoBehavior.next(this.itemsAberto);
-           }
 
+          this.itemsAberto.forEach(itemEmAberto => {
+              const nomeEmpresa = itemEmAberto.entrada.papeis[0].empresa;
+              const itemAcao: ItemAcao =  valores.filter(item => item.codigo === nomeEmpresa)[0];
+
+              if (itemAcao !== undefined) {
+                const valorAtual = itemAcao.valor;
+                itemEmAberto.saida.valor = Number(valorAtual);
+                itemEmAberto.saida.quantidade = itemEmAberto.entrada.quantidade;
+                itemEmAberto.saida.count = 1;
+              }
+          });
         });
-
       });
     }
 
     public exibirDetalhes(valor) {
-      console.log(valor);
       this.exibirDetalhesGeral = valor;
     }
 
@@ -128,23 +131,23 @@ export class DashboardComponent implements OnInit {
     }
 
     atualizeItem(index, observer: Subscriber<any>) {
-      index ++;
+      // index ++;
 
-      if (index === this.itemsAberto.length)  {
-        observer.next(index);
-        observer.complete();
-      } else {
-        const x = this.itemsAberto[index];
-        const dadosDaAcao = this.dicionarioDeAcoes[x.entrada.papeis[0].empresa];
+      // if (index === this.itemsAberto.length)  {
+      //   observer.next(index);
+      //   observer.complete();
+      // } else {
+      //   const x = this.itemsAberto[index];
+      //   const dadosDaAcao = this.dicionarioDeAcoes[x.entrada.papeis[0].empresa];
 
-        if (dadosDaAcao !== undefined) {
-          const valorAtual = dadosDaAcao[1];
-          x.saida.valor = Number(valorAtual);
-          x.saida.quantidade = x.entrada.quantidade;
-          x.saida.count = 1;
-        }
+      //   if (dadosDaAcao !== undefined) {
+      //     const valorAtual = dadosDaAcao[1];
+      //     x.saida.valor = Number(valorAtual);
+      //     x.saida.quantidade = x.entrada.quantidade;
+      //     x.saida.count = 1;
+      //   }
 
-        this.atualizeItem(index, observer);
-      }
+      //   this.atualizeItem(index, observer);
+      // }
     }
 }

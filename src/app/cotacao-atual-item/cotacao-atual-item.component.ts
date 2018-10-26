@@ -13,7 +13,8 @@ export class CotacaoAtualItemComponent implements OnInit {
   constructor() { }
 
   @Input() item: ItemAcao;
-  @Input() existente = true;
+  @Input() desabilitarCodigo: boolean;
+  @Input() desabilitarValor: boolean;
 
   ngOnInit() {
   }

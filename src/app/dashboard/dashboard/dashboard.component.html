@@ -1,7 +1,7 @@
 <div class="item">
-  <div class="controles mw-100 float-sm-left ml-1">
+  <!-- <div class="controles mw-100 float-sm-left ml-1">
     <app-upload-button (upload)="changeListener($event)"></app-upload-button>
-  </div>
+  </div> -->
   <div *ngIf="original.length > 0" class="filtros">
       <app-tipos class="filtro" (selecionouTipo)="selecionouTipo($event)"></app-tipos>
       <app-tipo-item-dashboard  class="filtro" (selecionouTipo)="selecionouTipoItemDashboard($event)"></app-tipo-item-dashboard>
