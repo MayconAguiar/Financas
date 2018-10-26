@@ -1,8 +1,13 @@
+<div *ngIf="original.length > 0">
+  <div class="item">
+    <button (click)="logout()">Sair</button>
+  </div>
+
 <div class="item">
   <!-- <div class="controles mw-100 float-sm-left ml-1">
     <app-upload-button (upload)="changeListener($event)"></app-upload-button>
   </div> -->
-  <div *ngIf="original.length > 0" class="filtros">
+  <div class="filtros">
       <app-tipos class="filtro" (selecionouTipo)="selecionouTipo($event)"></app-tipos>
       <app-tipo-item-dashboard  class="filtro" (selecionouTipo)="selecionouTipoItemDashboard($event)"></app-tipo-item-dashboard>
       <app-geral  class="filtro" (exibir)="exibirDetalhes($event)"></app-geral>
@@ -13,7 +18,7 @@
   <app-resumo [resumo]="resumo"></app-resumo>
 </div>
 
-<div *ngIf="original.length > 0" class="itens ml-1">
+<div class="itens ml-1">
   <div class="item">
     <app-datas (mudoumes)="mudouFiltro($event) "></app-datas>
   </div>
@@ -29,4 +34,5 @@
       <app-item-dashboard [item]="item" [exibirDetalhesGeral]="exibirDetalhesGeral" ></app-item-dashboard>
     </div>
   </div>
+</div>
 </div>

@@ -12,6 +12,8 @@ import { TipoDashboard } from '../../tipo-dashboard.enum';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ItemAcao } from '../../negocio/ItemAcao';
 import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +22,11 @@ import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private http: HttpClient, private angularFire: AngularFireDatabase) { }
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private http: HttpClient,
+    private angularFire: AngularFireDatabase) { }
 
     itemsAsObservable: Observable<ItemDashboard[]>;
     itemsAbertoAsObservable: Observable<ItemDashboard[]>;
@@ -91,7 +97,6 @@ export class DashboardComponent implements OnInit {
     private Inicie() {
       this.angularFire.list<ItemArquivo>('/ItensArquivo').valueChanges()
       .subscribe(itens => {
-        debugger;
         this.items = new Gerenciador(itens).obtenha();
 
         this.original = this.items;
@@ -125,29 +130,10 @@ export class DashboardComponent implements OnInit {
       this.exibirDetalhesGeral = valor;
     }
 
-    atualizeItensAtuais() {
-      const index = -1;
-      return new Observable<any>(observer => this.atualizeItem(index, observer));
+    public logout() {
+      this.afAuth.auth.signOut();
+      this.router.navigate(['']);
     }
 
-    atualizeItem(index, observer: Subscriber<any>) {
-      // index ++;
 
-      // if (index === this.itemsAberto.length)  {
-      //   observer.next(index);
-      //   observer.complete();
-      // } else {
-      //   const x = this.itemsAberto[index];
-      //   const dadosDaAcao = this.dicionarioDeAcoes[x.entrada.papeis[0].empresa];
-
-      //   if (dadosDaAcao !== undefined) {
-      //     const valorAtual = dadosDaAcao[1];
-      //     x.saida.valor = Number(valorAtual);
-      //     x.saida.quantidade = x.entrada.quantidade;
-      //     x.saida.count = 1;
-      //   }
-
-      //   this.atualizeItem(index, observer);
-      // }
-    }
 }

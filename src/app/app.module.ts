@@ -16,6 +16,8 @@ import { CotacaoAtualItemComponent } from './cotacao-atual-item/cotacao-atual-it
 import { PipesModule } from './pipes/pipes.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
 
 
 registerLocaleData(localeBR);
@@ -24,7 +26,7 @@ registerLocaleData(localeBR);
   declarations: [
     AppComponent,
     CotacaoAtualComponent,
-    CotacaoAtualItemComponent
+    CotacaoAtualItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ registerLocaleData(localeBR);
     ImportaArquivoModule,
     FormsModule,
     PipesModule,
+    LoginModule,
     AngularFireModule.initializeApp(FirebaseConfig)
   ],
   providers: [FinanceService, AngularFireDatabase, { provide: LOCALE_ID, useValue: 'pt-BR'}],
