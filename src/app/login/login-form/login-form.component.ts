@@ -16,6 +16,7 @@ export class LoginFormComponent implements OnInit {
   senha = '';
 
   ngOnInit() {
+
   }
 
   logar() {
