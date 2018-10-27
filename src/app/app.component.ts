@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 
 export class AppComponent {
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth) {
     this.afAuth.auth.signOut();
   }
 }
