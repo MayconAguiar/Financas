@@ -20,7 +20,9 @@ import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
 import { AuthGuard } from './authGuard';
 import { MenuComponent } from './menu/menu.component';
-
+import { GraficoComponent } from './grafico/grafico.component';
+import { AlocacaoDeRecursosComponent } from './alocacao-de-recursos/alocacao-de-recursos.component';
+import { GraficoDetalhesComponent } from './grafico-detalhes/grafico-detalhes.component';
 
 registerLocaleData(localeBR);
 
@@ -30,6 +32,9 @@ registerLocaleData(localeBR);
     CotacaoAtualComponent,
     CotacaoAtualItemComponent,
     MenuComponent,
+    GraficoComponent,
+    AlocacaoDeRecursosComponent,
+    GraficoDetalhesComponent
   ],
   imports: [
     BrowserModule,

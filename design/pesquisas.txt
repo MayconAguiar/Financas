@@ -1,3 +1,4 @@
 inclusão firebase
 https://braziljs.org/blog/simples-aplicacao-real-time-com-angular-4-e-firebase-parte-2/
 touch src/app/app.routing.module.ts
+http://www.chartjs.org/docs/latest/configuration/elements.html

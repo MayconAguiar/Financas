@@ -1,0 +1,22 @@
+<!-- <div class="itemgrafico"> <app-grafico></app-grafico> </div> -->
+<div class="flip-container"
+[class.hover]="status">
+    <div class="flipper">
+      <div class="front">
+          <div class="card">
+              <div class="card-header">Header</div>
+              <div class="card-body"><app-grafico></app-grafico></div>
+              <div class="card-footer" (click)="flip()" >Exibir despesas detalhadas</div>
+            </div>
+
+      </div>
+      <div class="back">
+          <div class="card">
+              <div class="card-header">Header</div>
+              <div class="card-body"><app-grafico-detalhes></app-grafico-detalhes></div>
+              <div class="card-footer" (click)="flip()" >Exibir Gráfico</div>
+          </div>
+      </div>
+    </div>
+  </div>
+
