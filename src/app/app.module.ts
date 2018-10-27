@@ -18,6 +18,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
+import { AuthGuard } from './authGuard';
+import { MenuComponent } from './menu/menu.component';
 
 
 registerLocaleData(localeBR);
@@ -27,6 +29,7 @@ registerLocaleData(localeBR);
     AppComponent,
     CotacaoAtualComponent,
     CotacaoAtualItemComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,11 @@ registerLocaleData(localeBR);
     LoginModule,
     AngularFireModule.initializeApp(FirebaseConfig)
   ],
-  providers: [FinanceService, AngularFireDatabase, { provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [
+    FinanceService,
+    AuthGuard,
+    AngularFireDatabase,
+    { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

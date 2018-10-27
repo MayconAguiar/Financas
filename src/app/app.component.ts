@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,7 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class AppComponent {
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth.auth.signOut();
+  }
 }

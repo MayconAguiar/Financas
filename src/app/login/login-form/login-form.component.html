@@ -1,8 +1,15 @@
-<h1>Login</h1>
-<div>
-  <input type="text" required [(ngModel)]="email" placeholder="Email">
-  <br />
-  <input type="password" required [(ngModel)]="senha" placeholder="Senha">
-  <br />
-  <button [disabled]="email=='' || senha ==''" (click)="logar()">Logar</button>
+<div class="conteudo">
+  <div class="imgcontainer">
+    <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Email</b></label>
+    <input type="text" placeholder="Entre com o email" [(ngModel)]="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Entre com a senha" [(ngModel)]="senha" required>
+
+    <button (click)="logar()" >Login</button>
+  </div>
 </div>

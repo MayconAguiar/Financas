@@ -12,8 +12,6 @@ import { TipoDashboard } from '../../tipo-dashboard.enum';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ItemAcao } from '../../negocio/ItemAcao';
 import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,8 +21,6 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private afAuth: AngularFireAuth,
-    private router: Router,
     private http: HttpClient,
     private angularFire: AngularFireDatabase) { }
 
@@ -129,11 +125,4 @@ export class DashboardComponent implements OnInit {
     public exibirDetalhes(valor) {
       this.exibirDetalhesGeral = valor;
     }
-
-    public logout() {
-      this.afAuth.auth.signOut();
-      this.router.navigate(['']);
-    }
-
-
 }
