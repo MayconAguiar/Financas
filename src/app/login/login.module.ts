@@ -4,10 +4,14 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { FirebaseConfig } from '../../environments/firebase.config';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule
+    CommonModule,
+    FormsModule,
+    AngularFireModule.initializeApp(FirebaseConfig)
   ],
   declarations: [LoginFormComponent, LoginComponent],
   exports: [LoginFormComponent, LoginComponent],

@@ -5,7 +5,7 @@
       <div class="front">
           <div class="card">
               <div class="card-header">Header</div>
-              <div class="card-body"><app-grafico></app-grafico></div>
+              <div class="card-body"><app-grafico *ngIf="carregadoValores" [descricoes]="descricoes" [valores]="valores"></app-grafico></div>
               <div class="card-footer" (click)="flip()" >Exibir despesas detalhadas</div>
             </div>
 

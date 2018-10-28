@@ -14,8 +14,6 @@ import { ImportaArquivoModule } from './importa-arquivo/importa-arquivo.module';
 import { CotacaoAtualComponent } from './cotacao-atual/cotacao-atual.component';
 import { CotacaoAtualItemComponent } from './cotacao-atual-item/cotacao-atual-item.component';
 import { PipesModule } from './pipes/pipes.module';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
 import { AuthGuard } from './authGuard';
@@ -23,6 +21,8 @@ import { MenuComponent } from './menu/menu.component';
 import { GraficoComponent } from './grafico/grafico.component';
 import { AlocacaoDeRecursosComponent } from './alocacao-de-recursos/alocacao-de-recursos.component';
 import { GraficoDetalhesComponent } from './grafico-detalhes/grafico-detalhes.component';
+import { ComumModule } from './comum/comum.module';
+import { CommonModule } from '@angular/common';
 
 registerLocaleData(localeBR);
 
@@ -37,6 +37,7 @@ registerLocaleData(localeBR);
     GraficoDetalhesComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -45,12 +46,11 @@ registerLocaleData(localeBR);
     FormsModule,
     PipesModule,
     LoginModule,
-    AngularFireModule.initializeApp(FirebaseConfig)
+    ComumModule
   ],
   providers: [
     FinanceService,
     AuthGuard,
-    AngularFireDatabase,
     { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })

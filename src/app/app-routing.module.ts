@@ -8,7 +8,7 @@ import { AuthGuard } from './authGuard';
 import { AlocacaoDeRecursosComponent } from './alocacao-de-recursos/alocacao-de-recursos.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/alocacao', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login',  component: LoginFormComponent },
   { path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard]   },
   { path: 'cotacaoatual', component: CotacaoAtualComponent,  canActivate: [AuthGuard]   },

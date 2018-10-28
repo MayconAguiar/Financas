@@ -14,10 +14,11 @@ import { ItemDashboardDetalhesComponent } from './item-dashboard-detalhes/item-d
 import { ItemResumoComponent } from './item-resumo/item-resumo.component';
 import { ItemEmAbertoDashboardComponent } from './item-em-aberto-dashboard/item-em-aberto-dashboard.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ComumModule } from '../comum/comum.module';
 
 @NgModule({
   imports: [
-    CommonModule, BrowserModule, HttpClientModule, PipesModule
+    CommonModule, BrowserModule, HttpClientModule, PipesModule, ComumModule
   ],
   exports: [
   ],

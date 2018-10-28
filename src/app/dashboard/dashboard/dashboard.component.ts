@@ -8,10 +8,9 @@ import {Observable, BehaviorSubject} from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { Subscriber } from 'rxjs/Subscriber';
 import { TipoDashboard } from '../../tipo-dashboard.enum';
-
-import { AngularFireDatabase } from 'angularfire2/database';
 import { ItemAcao } from '../../negocio/ItemAcao';
 import { ItemArquivo } from '../../importa-arquivo/arquivos/itemArquivo';
+import { DashboardService } from '../../comum/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private angularFire: AngularFireDatabase) { }
+    private servico: DashboardService ) { }
 
     itemsAsObservable: Observable<ItemDashboard[]>;
     itemsAbertoAsObservable: Observable<ItemDashboard[]>;
@@ -91,33 +90,14 @@ export class DashboardComponent implements OnInit {
     }
 
     private Inicie() {
-      this.angularFire.list<ItemArquivo>('/ItensArquivo').valueChanges()
-      .subscribe(itens => {
-        this.items = new Gerenciador(itens).obtenha();
-
-        this.original = this.items;
-
-        this.itemsAberto =  this.original.filter(itemOriginal => itemOriginal.saida.ObtenhaData() === undefined);
-
+      this.servico.obtenhaDashBoards().subscribe(itens => {
+        this.items = itens;
+        this.original = itens;
         this.itensBehavior.next(this.items);
-
         this.resumoBehavior.next(new Resumo(this.items));
 
-        this.angularFire.list<ItemAcao>('/CotacoesAtuais').valueChanges()
-        .subscribe(valores => {
-
-
-          this.itemsAberto.forEach(itemEmAberto => {
-              const nomeEmpresa = itemEmAberto.entrada.papeis[0].empresa;
-              const itemAcao: ItemAcao =  valores.filter(item => item.codigo === nomeEmpresa)[0];
-
-              if (itemAcao !== undefined) {
-                const valorAtual = itemAcao.valor;
-                itemEmAberto.saida.valor = Number(valorAtual);
-                itemEmAberto.saida.quantidade = itemEmAberto.entrada.quantidade;
-                itemEmAberto.saida.count = 1;
-              }
-          });
+        this.servico.obtenhaItensEmAberto(this.original).subscribe(emabertos => {
+          this.itemsAberto = emabertos;
         });
       });
     }
