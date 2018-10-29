@@ -4,11 +4,14 @@
 
 <div id="demo" class="carousel slide conteudo" data-ride="carousel">
     <div class="carousel-inner">
-
-      <div class="carousel-item" [class.active]="i==0" *ngFor="let item of itens; let i = index;">
-          <div class="card-body">
-            <div class="card-text">Item teste {{ i }}</div>
-          </div>
+      <div class="itensDashboard">
+        <div class="carousel-item" [class.active]="i==0" *ngFor="let lista of itens; let i = index;">
+            <div *ngFor="let item of lista; let i = index;" class="card-body">
+              <h4 class="card-title">{{ item.entrada.papeis[0].empresa }}</h4>
+              <div class="card-text">Quantidade: {{ item.entrada.quantidade }}</div>
+              <div class="card-text">Valor Médio: {{ item.entrada.ValorMedio()| currencyFormat  }}</div>
+            </div>
+        </div>
       </div>
     </div>
 

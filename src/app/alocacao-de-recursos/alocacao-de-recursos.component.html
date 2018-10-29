@@ -13,7 +13,7 @@
       <div class="back">
           <div class="card">
               <div class="card-header">Header</div>
-              <div class="card-body item"><app-grafico-detalhes *ngIf="carregadoValores" [itens]="itemsAberto"></app-grafico-detalhes></div>
+              <div class="card-body item"><app-grafico-detalhes [observableItens]="itemsAberto"></app-grafico-detalhes></div>
               <div class="card-footer" (click)="flip()" >Exibir Gráfico</div>
           </div>
       </div>

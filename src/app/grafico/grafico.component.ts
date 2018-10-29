@@ -15,7 +15,7 @@ export class GraficoComponent implements OnInit, AfterViewInit {
   ctx: any;
   @ViewChild('myChart') el: ElementRef;
 
-  @Input() height = 400;
+  // @Input() height = 400;
   @Input() descricoes: string[] = [];
   @Input() valores: number[] = [];
 
@@ -48,7 +48,7 @@ export class GraficoComponent implements OnInit, AfterViewInit {
         ]
       },
       options: {
-        responsive: false
+        responsive: true
       }
     });
   }

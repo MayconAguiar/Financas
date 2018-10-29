@@ -6,6 +6,7 @@ import { AfterViewInit } from '@angular/core';
 import { DashboardService } from '../comum/dashboard.service';
 import { ItemDashboard } from '../negocio/ItemDashboard';
 import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-alocacao-de-recursos',
@@ -16,33 +17,31 @@ import { Observable } from 'rxjs/internal/Observable';
 export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
 
   constructor(private servico: DashboardService) { }
-
-  // @ViewChild('header') header: ElementRef;
-  // sticky;
-  status = true;
+  status = false;
   carregadoValores = false;
-  itemsAberto: ItemDashboard[];
-  // valores: Observable<number[]>;
-  // descricoes: Observable<string[]>;
+  itemsAberto: Observable<ItemDashboard[]>;
+  itemsAbertoBehaviorSubject = new BehaviorSubject<ItemDashboard[]>([]);
   valores = [];
   descricoes = [];
 
   ngOnInit() {
+    this.itemsAberto = this.itemsAbertoBehaviorSubject.asObservable();
   }
 
   ngAfterViewInit() {
     this.servico.obtenhaDashBoards().subscribe(itens => {
       this.servico.obtenhaItensEmAberto(itens).subscribe(emabertos => {
-        this.itemsAberto = emabertos;
-        /// const itens3ParaTeste = this.itemsAberto.slice(0, 3);
+
+        // const itens3ParaTeste = this.itemsAberto.slice(0, 3);
 
         emabertos.filter(item => item.saida.valor > 0).forEach(x => {
           this.valores.push(Math.round(x.saida.quantidade * x.saida.valor));
           this.descricoes.push(x.entrada.papeis[0].empresa);
         });
 
-        console.log(this.valores);
-        console.log(this.descricoes);
+        // console.log(this.valores);
+        // console.log(this.descricoes);
+        this.itemsAbertoBehaviorSubject.next(emabertos);
 
         this.carregadoValores = true;
       });
