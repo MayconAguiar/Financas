@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
+import { ItemDashboard } from '../negocio/ItemDashboard';
 
 @Component({
   selector: 'app-grafico-detalhes',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class GraficoDetalhesComponent implements OnInit {
 
   constructor() { }
+
+  @Input() itens: ItemDashboard[];
 
   ngOnInit() {
   }

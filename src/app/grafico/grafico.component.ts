@@ -19,9 +19,6 @@ export class GraficoComponent implements OnInit, AfterViewInit {
   @Input() descricoes: string[] = [];
   @Input() valores: number[] = [];
 
-  @Input() ObservableDescricoes: string[] = [];
-  @Input() ObservableValores: number[] = [];
-
   constructor() { }
 
   data: any;
