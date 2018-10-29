@@ -26,4 +26,8 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/alocacao']);
   }
 
+  public home() {
+    this.router.navigate(['/dashboard']);
+  }
+
 }
