@@ -48,7 +48,7 @@ export class GraficoComponent implements OnInit, AfterViewInit {
         ]
       },
       options: {
-        responsive: true
+        responsive: false
       }
     });
   }

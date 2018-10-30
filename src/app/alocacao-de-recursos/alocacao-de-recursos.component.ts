@@ -21,9 +21,9 @@ export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
 
   status = false;
   carregadoValores = false;
-  observableItemsAberto: Observable<any>;
-  itemsAbertoBehaviorSubject = new BehaviorSubject<any>({});
-  itensAberto: any = { itens: [], quantidade: 1};
+  observableItemsAberto: Observable<ItemDashboard[]>;
+  itemsAbertoBehaviorSubject = new BehaviorSubject<ItemDashboard[]>([]);
+  // itensAberto: any = { itens: [], quantidade: 1};
   valores = [];
   descricoes = [];
 
@@ -37,13 +37,13 @@ export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
   }
 
   mediaPhone() {
-    this.itensAberto.quantidade = 1;
-    this.itemsAbertoBehaviorSubject.next(this.itensAberto);
+    // this.itensAberto.quantidade = 1;
+    // this.itemsAbertoBehaviorSubject.next(this.itensAberto);
   }
 
   mediaTablet() {
-    this.itensAberto.quantidade = 3;
-    this.itemsAbertoBehaviorSubject.next(this.itensAberto);
+    // this.itensAberto.quantidade = 3;
+    // this.itemsAbertoBehaviorSubject.next(this.itensAberto);
   }
 
   ngAfterViewInit() {
@@ -58,10 +58,10 @@ export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
           this.descricoes.push(x.entrada.papeis[0].empresa);
         });
 
-        // console.log(this.valores);
+        // console.log(itens2);
         // console.log(this.descricoes);
-        that.itensAberto.itens = itens2;
-        that.itemsAbertoBehaviorSubject.next(that.itensAberto);
+        // that.itensAberto.itens = itens2;
+        that.itemsAbertoBehaviorSubject.next(itens2);
         that.carregadoValores = true;
       });
     });

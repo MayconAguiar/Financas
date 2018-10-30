@@ -13,17 +13,11 @@ export class GraficoDetalhesComponent implements OnInit {
 
   constructor() { }
 
-  @Input() observableItens: Observable<any>;
+  @Input() observableItens: Observable<ItemDashboard[]>;
   itens: ItemDashboard[];
 
   ngOnInit() {
-    this.observableItens
-    .subscribe(x => {
-      console.log(x);
-      this.itens = this.splitIntoSubArray(x.itens, x.quantidade);
-    }
-      );
-
+     this.observableItens.subscribe(x => console.log(x));
   }
 
   private splitIntoSubArray(arr, count) {

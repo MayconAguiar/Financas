@@ -12,4 +12,5 @@ export class AppComponent {
   constructor(public afAuth: AngularFireAuth) {
     this.afAuth.auth.signOut();
   }
+  p = 1;
 }
