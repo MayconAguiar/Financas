@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -22,9 +21,17 @@ export class LoginFormComponent implements OnInit {
   logar() {
     this.afAuth.auth.signInWithEmailAndPassword(this.email, this.senha).then(ok => {
       this.router.navigate(['/dashboard']);
-    });
+    })
+    .catch(c => {
+      alert('Ihhh deu probleminha aqui! \n Erro: ' + c.message);
+      });
 
     this.email = '';
     this.senha = '';
+  }
+
+  novoUsuario() {
+    console.log('novo usuario');
+    this.router.navigate(['/login/cadastro']);
   }
 }

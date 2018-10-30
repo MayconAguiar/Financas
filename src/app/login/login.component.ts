@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +10,6 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
 
+  }
 }
