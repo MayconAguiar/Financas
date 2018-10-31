@@ -1,21 +1,29 @@
-<div class="conteudo">
-  <div class="imgcontainer">
-    <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="form-group conteudo">
+    <div class="imgcontainer">
+      <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="form-group">
+
+      <label for="name"><b>Email</b></label>
+      <input type="email" class="form-control" placeholder="Entre com o email"
+
+      [(ngModel)]="email"
+      email formControlName="email" >
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Entre com a senha"
+      [(ngModel)]="senha" formControlName="password">
+
+    </div>
+    <button type="submit">Login</button>
+
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn" (click)="novoUsuario()">Novo Usuário</button>
+      <!-- <a routerLink="/cadastro" >Cadastro </a> -->
+      <span class="psw">Esqueceu a <a href="#">senha?</a></span>
+    </div>
   </div>
-
-  <div class="container">
-    <label for="uname"><b>Email</b></label>
-    <input type="text" placeholder="Entre com o email" [(ngModel)]="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Entre com a senha" [(ngModel)]="senha" required>
-
-    <button (click)="logar()" >Login</button>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">       
-    <button type="button" class="cancelbtn" (click)="novoUsuario()">Novo Usuário</button>
-    <!-- <a routerLink="/cadastro" >Cadastro </a> -->
-    <span class="psw">Esqueceu a <a href="#">senha?</a></span>
-  </div>
-</div>
+</form>

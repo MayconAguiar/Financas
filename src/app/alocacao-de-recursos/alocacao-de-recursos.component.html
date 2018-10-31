@@ -8,7 +8,7 @@
     [class.hover]="status">
         <div class="flipper">
           <div class="front">
-              <div class="card">
+              <div class="card itemcard">
                   <div class="card-header">Header</div>
                   <div class="card-body"><app-grafico *ngIf="carregadoValores" [descricoes]="descricoes" [valores]="valores"></app-grafico></div>
                   <div class="card-footer" (click)="flip()" >Exibir despesas detalhadas</div>
@@ -16,7 +16,7 @@
 
           </div>
           <div class="back">
-              <div class="card">
+              <div class="card itemcard">
                   <div class="card-header">Header</div>
                   <div class="card-body">
                     <app-grafico-detalhes

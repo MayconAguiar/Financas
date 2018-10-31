@@ -19,7 +19,7 @@ export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
 
   constructor(private servico: DashboardService, private matchMediaService: MatchMediaService) { }
 
-  status = false;
+  status = true;
   carregadoValores = false;
   observableItemsAberto: Observable<ItemDashboard[]>;
   itemsAbertoBehaviorSubject = new BehaviorSubject<ItemDashboard[]>([]);
@@ -53,15 +53,13 @@ export class AlocacaoDeRecursosComponent implements OnInit, AfterViewInit {
 
         // const itens3ParaTeste = this.itemsAberto.slice(0, 3);
 
-        itens2.filter(item => item.saida.valor > 0).forEach(x => {
+        const itensEmAberto = itens2.filter(item => item.saida.valor > 0);
+        itensEmAberto.forEach(x => {
           this.valores.push(Math.round(x.saida.quantidade * x.saida.valor));
           this.descricoes.push(x.entrada.papeis[0].empresa);
         });
 
-        // console.log(itens2);
-        // console.log(this.descricoes);
-        // that.itensAberto.itens = itens2;
-        that.itemsAbertoBehaviorSubject.next(itens2);
+        that.itemsAbertoBehaviorSubject.next(itensEmAberto);
         that.carregadoValores = true;
       });
     });

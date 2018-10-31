@@ -4,15 +4,19 @@
   <hr>
 
   <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Entre com o email" [(ngModel)]="email" required>
+  <input type="email" email placeholder="Entre com o email"
+  [(ngModel)]="email" required name="email">
+
 
   <label for="psw"><b>Password</b></label>
-  <input type="password" placeholder="Entre com a senha" [(ngModel)]="senha" required>
+  <input type="password" placeholder="Entre com a senha"
+  [(ngModel)]="senha" required name="password">
+
 
   <label for="psw-repeat"><b>Repita a senha</b></label>
   <input type="password" placeholder="Repita a senha" [(ngModel)]="confirmacao" required>
 
-  <div class="clearfix">    
+  <div class="clearfix">
     <button (click)="cadastre()" class="signupbtn">Cadastrar</button>
   </div>
 </div>
