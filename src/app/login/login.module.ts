@@ -11,17 +11,24 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ComumModule } from '../comum/comum.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ComumModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(FirebaseConfig)
   ],
-  declarations: [LoginComponent, CadastroComponent, LoginFormComponent],
-  exports: [LoginComponent, CadastroComponent],
+  declarations: [
+    LoginComponent,
+    CadastroComponent,
+    LoginFormComponent],
+  exports: [
+    LoginComponent,
+    CadastroComponent],
   providers: [ AngularFireAuth ]
 })
 export class LoginModule { }

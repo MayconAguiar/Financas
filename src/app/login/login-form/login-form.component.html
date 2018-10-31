@@ -6,15 +6,24 @@
 
     <div class="form-group">
 
-      <label for="name"><b>Email</b></label>
+      <!-- <label for="name"><b>Email</b></label>
       <input type="email" class="form-control" placeholder="Entre com o email"
-
       [(ngModel)]="email"
-      email formControlName="email" >
+      email formControlName="email"
+       > -->
+       <app-input-field class="col-sm-12" formControlName="email"
+       [classeCss]="aplicaCssErro('email')" type="text"
+       id="email" label="Email" [control]="formulario.get('email')">
+      </app-input-field>
 
-      <label for="psw"><b>Password</b></label>
+      <app-input-field class="col-sm-12" formControlName="senha"
+      [classeCss]="aplicaCssErro('senha')" type="password"
+      id="senha" label="Senha" [control]="formulario.get('senha')">
+     </app-input-field>
+
+      <!-- <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Entre com a senha"
-      [(ngModel)]="senha" formControlName="password">
+      [(ngModel)]="senha" formControlName="password"> -->
 
     </div>
     <button type="submit">Login</button>
