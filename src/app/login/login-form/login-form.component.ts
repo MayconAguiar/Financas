@@ -21,7 +21,7 @@ export class LoginFormComponent extends BaseFormComponent implements OnInit {
 
   email = '';
   senha = '';
-  formulario: FormGroup;
+  // formulario: FormGroup;
 
   ngOnInit() {
 

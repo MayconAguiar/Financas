@@ -1,22 +1,38 @@
-<div class="container">
-  <h1>Cadastro de Usuários</h1>
-  <p>Preencha seus dados para criar sua conta.</p>
-  <hr>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="form-group container">
+    <h1>Cadastro de Usuários</h1>
+    <p>Preencha seus dados para criar sua conta.</p>
+    <hr>
 
-  <label for="email"><b>Email</b></label>
-  <input type="email" email placeholder="Entre com o email"
-  [(ngModel)]="email" required name="email">
+    <app-input-field email
+    formControlName="email"
+    [classeCss]="aplicaCssErro('email')" type="text"
+    placeholder="Entre com o email"
+    id="email" label="Email" [control]="formulario.get('email')">
+    </app-input-field>
+
+    <app-input-field
+    formControlName="senha"
+    [classeCss]="aplicaCssErro('senha')"
+    type="password"
+    placeholder="Entre com a senha"
+    id="senha"
+    label="Senha"
+    [control]="formulario.get('senha')">
+    </app-input-field>
+
+    <app-input-field
+    type="password"
+    id="confirmacao"
+    label="Confirme a senha"
+    placeholder="Repita a senha"
+    formControlName="confirmacao"
+    [classeCss]="aplicaCssErro('confirmacao')"
+    [control]="formulario.get('confirmacao')"></app-input-field>
 
 
-  <label for="psw"><b>Password</b></label>
-  <input type="password" placeholder="Entre com a senha"
-  [(ngModel)]="senha" required name="password">
-
-
-  <label for="psw-repeat"><b>Repita a senha</b></label>
-  <input type="password" placeholder="Repita a senha" [(ngModel)]="confirmacao" required>
-
-  <div class="clearfix">
-    <button (click)="cadastre()" class="signupbtn">Cadastrar</button>
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Cadastrar</button>
+    </div>
   </div>
-</div>
+</form>

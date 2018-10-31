@@ -20,6 +20,7 @@ export class InputFieldComponent implements OnInit, ControlValueAccessor {
   @Input() id: string;
   @Input() label: string;
   @Input() type: string;
+  @Input() placeholder: string;
   @Input() control;
   @Input() isReadOnly = false;
 
