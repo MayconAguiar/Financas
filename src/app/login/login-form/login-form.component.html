@@ -1,36 +1,36 @@
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div class="form-group conteudo">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="conteudo">
     <div class="imgcontainer">
       <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="form-group">
+      <label for="name"><b>Email</b></label>
+      <input type="email" class="form-control"
+      placeholder="Entre com o email"
+      [class.is-invalid]="!email.valid && email.touched"
+      [(ngModel)]="usuario.email" name="email" required #email="ngModel">
 
-      <!-- <label for="name"><b>Email</b></label>
-      <input type="email" class="form-control" placeholder="Entre com o email"
-      [(ngModel)]="email"
-      email formControlName="email"
-       > -->
-       <app-input-field class="col-sm-12" formControlName="email"
-       [classeCss]="aplicaCssErro('email')" type="text"
-       id="email" label="Email" [control]="formulario.get('email')">
-      </app-input-field>
-
-      <app-input-field class="col-sm-12" formControlName="senha"
-      [classeCss]="aplicaCssErro('senha')" type="password"
-      id="senha" label="Senha" [control]="formulario.get('senha')">
-     </app-input-field>
-
-      <!-- <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Entre com a senha"
-      [(ngModel)]="senha" formControlName="password"> -->
-
+      <span class="invalid-feedback" *ngIf="!email.valid && email.touched">
+        Email é obrigatório
+      </span>
     </div>
-    <button type="submit">Login</button>
 
+    <div class="form-group">
+      <label for="psw"><b>Password</b></label>
+      <input type="password" class="form-control"
+      placeholder="Entre com a senha"
+      [class.is-invalid]="!senha.valid && senha.touched"
+      [(ngModel)]="usuario.senha" name="password" required #senha="ngModel">
+      <span class="invalid-feedback" *ngIf="!senha.valid && senha.touched">
+        Senha é obrigatório
+      </span>
+    </div>
+
+    <button class="btn btn-primary botaologin" type="submit" [disabled]="!f.valid">Login</button>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn" (click)="novoUsuario()">Novo Usuário</button>
+      <button type="button" class="btn btn-secondary" (click)="novoUsuario()">Novo Usuário</button>
       <!-- <a routerLink="/cadastro" >Cadastro </a> -->
       <span class="psw">Esqueceu a <a href="#">senha?</a></span>
     </div>

@@ -10,24 +10,16 @@ import { BaseFormComponent } from '../../comum/base-form/base-form.component';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent extends BaseFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private router: Router,
-    private formBuilder: FormBuilder) {
-      super();
-    }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
-  email = '';
-  senha = '';
-  // formulario: FormGroup;
+  usuario = {
+    email: '',
+    senha: ''
+  };
 
   ngOnInit() {
-
-    this.formulario = this.formBuilder.group({
-      email: [ null, [Validators.required, Validators.email]],
-      senha: [null, [Validators.required]]});
   }
 
   novoUsuario() {
@@ -35,15 +27,12 @@ export class LoginFormComponent extends BaseFormComponent implements OnInit {
     this.router.navigate(['/login/cadastro']);
   }
 
-  submit() {
-    this.afAuth.auth.signInWithEmailAndPassword(this.formulario.value.email, this.formulario.value.senha).then(ok => {
+  onSubmit() {
+    this.afAuth.auth.signInWithEmailAndPassword(this.usuario.email, this.usuario.senha).then(ok => {
       this.router.navigate(['/dashboard']);
     })
     .catch(c => {
       alert('Ihhh deu probleminha aqui! \n Erro: ' + c.message);
       });
-
-    this.email = '';
-    this.senha = '';
   }
 }
