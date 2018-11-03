@@ -1,38 +1,58 @@
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<form #f="ngForm" (ngSubmit)="submit(f)">
   <div class="form-group container">
     <h1>Cadastro de Usuários</h1>
     <p>Preencha seus dados para criar sua conta.</p>
     <hr>
 
-    <app-input-field email
-    formControlName="email"
-    [classeCss]="aplicaCssErro('email')" type="text"
-    placeholder="Entre com o email"
-    id="email" label="Email" [control]="formulario.get('email')">
-    </app-input-field>
+    <div class="form-group">
+      <label for="name"><b>Email</b></label>
+      <input type="email" class="form-control"
+      placeholder="Entre com o email"
+      [class.is-invalid]="!email.valid && email.touched"
+      [(ngModel)]="usuario.email" name="email" required #email="ngModel">
 
-    <app-input-field
-    formControlName="senha"
-    [classeCss]="aplicaCssErro('senha')"
-    type="password"
-    placeholder="Entre com a senha"
-    id="senha"
-    label="Senha"
-    [control]="formulario.get('senha')">
-    </app-input-field>
-
-    <app-input-field
-    type="password"
-    id="confirmacao"
-    label="Confirme a senha"
-    placeholder="Repita a senha"
-    formControlName="confirmacao"
-    [classeCss]="aplicaCssErro('confirmacao')"
-    [control]="formulario.get('confirmacao')"></app-input-field>
-
-
-    <div class="clearfix">
-      <button type="submit" class="signupbtn">Cadastrar</button>
+      <span class="invalid-feedback" *ngIf="!email.valid && email.touched">
+        Email inválido
+      </span>
     </div>
+
+    <div class="form-group">
+      <label for="psw"><b>Senha</b></label>
+      <input type="password" class="form-control"
+      placeholder="Entre com a senha"
+      [class.is-invalid]="!senha.valid && senha.touched"
+      [(ngModel)]="usuario.senha" name="senha" required
+      reverse="true" #senha="ngModel">
+      <span class="invalid-feedback" *ngIf="!senha.valid && senha.touched">
+        Senha é obrigatório
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="psw"><b>Confirmação da senha</b></label>
+      <input type="password"
+      class="form-control"
+      placeholder="Confirme a senha"
+      [class.is-invalid]="confirmacaoDaSenha.touched && !confirmacaoDaSenha.valid"
+      [(ngModel)]="confirmacao" name="confirmacao"
+      validateEqual="senha"
+      required #confirmacaoDaSenha="ngModel">
+      <span class="invalid-feedback" *ngIf="!confirmacaoDaSenha.valid && confirmacaoDaSenha.touched && confirmacao==''">
+        Confirmação da senha é obrigatório
+      </span>
+      <span class="invalid-feedback" *ngIf="!confirmacaoDaSenha.valid
+      && senha.touched && confirmacaoDaSenha.touched
+      && confirmacao !== ''
+      && confirmacao!==usuario.senha">
+        As senhas não são as mesmas. Digite novamente!
+      </span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid" >Cadastrar</button>
+    <!-- <div class="clearfix">
+
+    </div> -->
   </div>
 </form>
+
+<app-form-debug [form]="f"></app-form-debug>

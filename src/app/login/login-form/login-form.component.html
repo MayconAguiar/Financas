@@ -12,9 +12,10 @@
       [(ngModel)]="usuario.email" name="email" required #email="ngModel">
 
       <span class="invalid-feedback" *ngIf="!email.valid && email.touched">
-        Email é obrigatório
+        Email inválido
       </span>
     </div>
+
 
     <div class="form-group">
       <label for="psw"><b>Password</b></label>
@@ -31,8 +32,8 @@
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="btn btn-secondary" (click)="novoUsuario()">Novo Usuário</button>
-      <!-- <a routerLink="/cadastro" >Cadastro </a> -->
       <span class="psw">Esqueceu a <a href="#">senha?</a></span>
     </div>
   </div>
 </form>
+<app-form-debug [form]="f"></app-form-debug>

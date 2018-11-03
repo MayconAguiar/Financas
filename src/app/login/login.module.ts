@@ -12,11 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComumModule } from '../comum/comum.module';
+import { FomularioModule } from '../forms/formulario.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    FomularioModule,
     ComumModule,
     ReactiveFormsModule,
     AppRoutingModule,
