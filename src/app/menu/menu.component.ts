@@ -30,4 +30,8 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  public importa() {
+    this.router.navigate(['/importa']);
+  }
+
 }

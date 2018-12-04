@@ -75,7 +75,7 @@ export class MatchMediaService {
   private OnGeneric(rule: string, callBack) {
     const mql = window.matchMedia(rule);
 
-    mql.addListener((evento: MediaQueryList) => {
+    mql.addListener((evento: MediaQueryListEvent) => {
         if (evento.matches) {
             callBack(evento);
         }
