@@ -11,9 +11,18 @@ export class Gerenciador {
     private datasPorAtivo = [];
     private itens: ItemArquivo[];
 
-    constructor(itens: ItemArquivo[] ) {
-        this.separeCompraDaVenda(itens);
-        this.itens = itens;
+    constructor(listaDoBanco: any[] ) {
+
+        const lista  = [];
+        listaDoBanco.forEach(listaPorMes =>  {
+            Object.keys(listaPorMes).forEach(mes => {
+                listaPorMes[mes].forEach(element => {
+                    lista.push(element);
+                });
+            });
+        });
+        this.separeCompraDaVenda(lista);
+        this.itens = lista;
         this.inicieDados();
     }
 

@@ -1,4 +1,3 @@
-//import { Taxas } from '../../negocio/taxas';
 import { Tipos } from '../../tipos.enum';
 
 export class ItemArquivo {
@@ -33,6 +32,12 @@ export class ItemArquivo {
             this.preco += item.preco;
             this.preco = this.preco / 2;
             this.count = 1;
+        }
+    }
+
+    public obtenhaMesAno() {
+        if (this.data !== undefined) {
+            return this.data.substring(0, 4) + '/' + this.data.substring(4, 6);
         }
     }
 }

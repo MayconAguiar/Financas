@@ -21,12 +21,36 @@ export class ImportaComponent implements OnInit {
 
     operacoes.processe().subscribe(itemArquivo => {
       // const items = new Gerenciador(x).obtenha();
-      console.log(itemArquivo);
-      itemArquivo.forEach(x => {
-        this.angularFire.list('/ItensArquivo').push(x);
+      // itemArquivo.
+      const grupos = this.groupBy(itemArquivo, x => x.obtenhaMesAno());
+
+      this.angularFire.list('/ItensArquivo').push(grupos);
+
+      grupos.forEach((lista, mes) => {
+       this.angularFire.object(`ItensArquivo/${mes}`).set(lista);
       });
+      // this.angularFire.list('/ItensArquivo').push(x);
+      // itemArquivo.forEach(x => {
+
+      //   const data = itemArquivo[0].data.substring(4, 6) + '/' + itemArquivo[0].data.substring(0, 4);
+      //   this.angularFire.list('/ItensArquivo').push(x);
+      // });
     });
 
+  }
+
+  groupBy(list, keyGetter) {
+    const map = new Map();
+    list.forEach((item) => {
+        const key = keyGetter(item);
+        const collection = map.get(key);
+        if (!collection) {
+            map.set(key, [item]);
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
   }
 
 }
