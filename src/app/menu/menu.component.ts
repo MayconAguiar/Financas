@@ -22,12 +22,16 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  public fechadas() {
+    this.router.navigate(['/fechadas']);
+  }
+
   public alocacao() {
     this.router.navigate(['/alocacao']);
   }
 
-  public home() {
-    this.router.navigate(['/dashboard']);
+  public abertas() {
+    this.router.navigate(['/abertas']);
   }
 
   public importa() {

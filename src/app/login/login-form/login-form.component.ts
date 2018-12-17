@@ -27,7 +27,7 @@ export class LoginFormComponent implements OnInit {
 
   submit(f) {
     this.afAuth.auth.signInWithEmailAndPassword(this.email, this.senha).then(ok => {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/fechadas']);
     })
     .catch(c => {
       alert('Ihhh deu probleminha aqui! \n Erro: ' + c.message);

@@ -1,0 +1,15 @@
+<div class="item">
+  <app-resumo [resumo]="resumo"></app-resumo>
+</div>
+
+<div  class="itens ml-1">
+  <div class="item">
+    <app-datas (mudoumes)="mudouFiltro($event) " [inicial]="mesSelecionado" ></app-datas>
+  </div>
+  <div class="item">
+    <div class="item"><h5>Operações Finalizadas </h5></div>
+    <div *ngFor="let item of itemsAsObservable | async; let i = index" class="card" style="width: 18rem;">
+      <app-item-dashboard [item]="item" [exibirDetalhesGeral]="exibirDetalhesGeral" ></app-item-dashboard>
+    </div>
+  </div>
+</div>

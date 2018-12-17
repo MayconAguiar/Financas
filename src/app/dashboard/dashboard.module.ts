@@ -15,6 +15,8 @@ import { ItemResumoComponent } from './item-resumo/item-resumo.component';
 import { ItemEmAbertoDashboardComponent } from './item-em-aberto-dashboard/item-em-aberto-dashboard.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ComumModule } from '../comum/comum.module';
+import { OperacoesFechadasComponent } from './operacoes-fechadas/operacoes-fechadas.component';
+import { OperacoesAbertasComponent } from './operacoes-abertas/operacoes-abertas.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { ComumModule } from '../comum/comum.module';
     ResumoComponent,
     ItemDashboardDetalhesComponent,
     ItemResumoComponent,
-    ItemEmAbertoDashboardComponent
+    ItemEmAbertoDashboardComponent,
+    OperacoesFechadasComponent,
+    OperacoesAbertasComponent
   ]
 })
 export class DashboardModule { }
