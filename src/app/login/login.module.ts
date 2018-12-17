@@ -9,11 +9,13 @@ import { AppRoutingModule } from '../app-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ComumModule } from '../comum/comum.module';
+import { FomularioModule } from '../forms/formulario.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    FomularioModule,
     ComumModule,
     ReactiveFormsModule,
     AppRoutingModule,
