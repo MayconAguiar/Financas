@@ -4,6 +4,7 @@ import { PDFJSStatic } from 'pdfjs-dist';
 import { ItemArquivo } from './itemArquivo';
 import { Tipos } from '../../tipos.enum';
 import { Taxas } from '../../negocio/taxas';
+import { Colunas } from './colunas';
 declare var require: any;
 
 export class ArquivosPDF {
@@ -156,27 +157,28 @@ export class ArquivosPDF {
             }
 
             const itemarquivo = new ItemArquivo();
+            const colunas = new Colunas(arrayElement.length);
 
             codigo += 1;
-            itemarquivo.natureza = arrayElement[1];
+            itemarquivo.natureza = arrayElement[colunas.natureza];
             itemarquivo.codigo = codigo;
             itemarquivo.data = this.obtenhaDataFormatada(data);
             itemarquivo.origem = arrayElement;
             itemarquivo.tipo = tipo;
 
-            const ultimoElemento = arrayElement.length - 1;
+            // const ultimoElemento = arrayElement.length - 1;
 
             switch (tipo) {
                 case Tipos.SWING_TRADE:
-                    itemarquivo.empresa = arrayElement[4].split(' ')[0];
-                    itemarquivo.quantidade = Number(arrayElement[ultimoElemento - 3].replace(/\D/g, ''));
-                    itemarquivo.preco = parseFloat(arrayElement[ultimoElemento - 2].replace(/,/g, '.'));
+                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa(arrayElement);
+                    itemarquivo.quantidade = Number(arrayElement[colunas.quantidade].replace(/\D/g, ''));
+                    itemarquivo.preco = parseFloat(arrayElement[colunas.preço].replace(/,/g, '.'));
 
                     break;
                 case Tipos.OPCOES:
-                    itemarquivo.empresa = arrayElement[4].split(' ')[0];
-                    itemarquivo.quantidade = Number(arrayElement[ultimoElemento - 3].replace(/\D/g, ''));
-                    itemarquivo.preco = parseFloat(arrayElement[ultimoElemento - 2].replace(/,/g, '.'));
+                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa(arrayElement);
+                    itemarquivo.quantidade = Number(arrayElement[colunas.quantidade].replace(/\D/g, ''));
+                    itemarquivo.preco = parseFloat(arrayElement[colunas.preço].replace(/,/g, '.'));
                     break;
                 default:
                     break;

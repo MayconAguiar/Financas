@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <form #f="ngForm" (ngSubmit)="submit(f)">
-=======
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
->>>>>>> 5af5eae764228960217e1885bdd3b7fafab3d7de
   <div class="conteudo">
     <div class="imgcontainer">
       <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
@@ -10,7 +6,6 @@
 
     <div class="form-group">
       <label for="name"><b>Email</b></label>
-<<<<<<< HEAD
       <input type="email" class="form-control" placeholder="Entre com o email" [(ngModel)]="email" email name="email" required>
       <div>
         Email é obrigatório
@@ -21,46 +16,6 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" class="form-control" placeholder="Entre com a senha" [(ngModel)]="senha" name="password" required>
     </div>
-
-    <button type="submit">Login</button>
-=======
-      <input type="email" class="form-control"
-      placeholder="Entre com o email"
-      [class.is-invalid]="!email.valid && email.touched"
-      [(ngModel)]="usuario.email" name="email" required #email="ngModel">
-
-      <span class="invalid-feedback" *ngIf="!email.valid && email.touched">
-        Email inválido
-      </span>
-    </div>
-
-
-    <div class="form-group">
-      <label for="psw"><b>Password</b></label>
-      <input type="password" class="form-control"
-      placeholder="Entre com a senha"
-      [class.is-invalid]="!senha.valid && senha.touched"
-      [(ngModel)]="usuario.senha" name="password" required #senha="ngModel">
-      <span class="invalid-feedback" *ngIf="!senha.valid && senha.touched">
-        Senha é obrigatório
-      </span>
-    </div>
->>>>>>> 5af5eae764228960217e1885bdd3b7fafab3d7de
-
     <button class="btn btn-primary botaologin" type="submit" [disabled]="!f.valid">Login</button>
-
-    <div class="container" style="background-color:#f1f1f1">
-<<<<<<< HEAD
-      <button type="button" class="cancelbtn" (click)="novoUsuario()">Novo Usuário</button>
-      <span class="psw">Esqueceu a <a href="#">senha?</a></span>
-    </div> -->
   </div> 
 </form> 
-=======
-      <button type="button" class="btn btn-secondary" (click)="novoUsuario()">Novo Usuário</button>
-      <span class="psw">Esqueceu a <a href="#">senha?</a></span>
-    </div>
-  </div>
-</form>
-<app-form-debug [form]="f"></app-form-debug>
->>>>>>> 5af5eae764228960217e1885bdd3b7fafab3d7de
