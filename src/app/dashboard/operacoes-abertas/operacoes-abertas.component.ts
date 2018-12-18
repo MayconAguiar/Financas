@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ItemDashboard } from '../../negocio/ItemDashboard';
 import { Resumo } from '../../negocio/Resumo';
-import {Observable, BehaviorSubject} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DashboardService } from '../../comum/dashboard.service';
 
 @Component({
@@ -33,13 +34,6 @@ export class OperacoesAbertasComponent implements OnInit {
     this.Inicie();
   }
 
-  // public mudouFiltro(mes) {
-  //   this.mesSelecionado = mes;
-  //   this.items =  this.obtenhaItens(Number(mes));
-  //   this.resumoBehavior.next(new Resumo(this.items));
-  //   this.itensBehavior.next(this.items);
-  // }
-
   private Inicie() {
     this.servico.obtenhaDashBoards().subscribe(itens => {
       this.original = itens;
@@ -50,14 +44,4 @@ export class OperacoesAbertasComponent implements OnInit {
     });
   }
 
-  // private obtenhaItens(mes) {
-  //   return this.original
-  //   .filter(x =>  {
-  //     return x.saida.ObtenhaData() !== undefined && x.saida.ObtenhaData().getMonth() === Number(mes);
-  //   });
-  // }
-
-  // private obtenhaMesAtual() {
-  //   return new Date().getMonth() - 1;
-  // }
 }

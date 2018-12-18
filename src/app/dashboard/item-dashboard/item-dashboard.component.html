@@ -9,12 +9,14 @@
     <div class="card-text">Quantidade: {{ item.entrada.quantidade }}</div>
     <div class="card-text">Valor Médio: {{ item.entrada.ValorMedio()| currencyFormat  }}</div>
   </div>
-  <div *ngIf="item.saida.existeValor()">
+  <div *ngIf="item.saida.existeValor() || item.saida.ObtenhaData() !== undefined">
     <div class="card-text"><h5>Saída</h5></div>
     <!-- <div *ngIf="item.saida.papeis.count !== 0" class="card-text">Natureza: {{ item.saida.papeis[0].natureza }}</div> -->
     <div class="card-text">Data: {{ item.saida.ObtenhaData() | date: 'dd/MM/yyyy' }}</div>
     <div class="card-text">Quantidade: {{ item.saida.quantidade }}</div>
     <div class="card-text">Valor Médio: {{ item.saida.ValorMedio()| currencyFormat }}</div>
-    <app-item-dashboard-detalhes [item]="item.resumo" [exibirDetalhesGeral]="exibirDetalhesGeral"></app-item-dashboard-detalhes>
+    <div *ngIf="item.saida.ObtenhaData() !== undefined">
+      <app-item-dashboard-detalhes [item]="item.resumo" [exibirDetalhesGeral]="exibirDetalhesGeral"></app-item-dashboard-detalhes>
+    </div>
   </div>
 </div>

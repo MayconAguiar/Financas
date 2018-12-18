@@ -32,6 +32,7 @@ export class DashboardService {
                   itemEmAberto.saida.valor = Number(valorAtual);
                   itemEmAberto.saida.quantidade = itemEmAberto.entrada.quantidade;
                   itemEmAberto.saida.count = 1;
+                  itemEmAberto.atualizeValores();
                 }
             });
 

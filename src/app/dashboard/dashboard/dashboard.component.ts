@@ -4,7 +4,8 @@ import { GerenciadorDeArquivos } from '../../gerenciadores/gerenciadorDeArquivos
 import { Gerenciador } from '../../gerenciadores/gerenciador';
 import { Resumo } from '../../negocio/Resumo';
 import { Tipos } from '../../tipos.enum';
-import {Observable, BehaviorSubject} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
 import { Subscriber } from 'rxjs/Subscriber';
 import { TipoDashboard } from '../../tipo-dashboard.enum';

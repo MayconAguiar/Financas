@@ -1,6 +1,7 @@
 
 import { ItemDashboard } from '../negocio/ItemDashboard';
 import { ItemArquivo } from '../importa-arquivo/arquivos/itemArquivo';
+import { Tipos } from '../tipos.enum';
 
 
 export class Gerenciador {
@@ -63,6 +64,18 @@ export class Gerenciador {
 
         // console.log(this.resultado);
         // return this.resultado.filter(x => x.entrada.quantidade > 0 && x.saida.quantidade > 0);
+
+        const opcoes = this.resultado.filter(x => x.tipo === Tipos.OPCOES && x.saida.count === 0);
+
+        opcoes.forEach(opcao => {
+            const saida = new ItemArquivo();
+            saida.data = opcao.entrada.data;
+            saida.quantidade = opcao.entrada.quantidade;
+            saida.preco = 0;
+
+            opcao.debite([saida]);
+        });
+
         return this.resultado.filter(x => x.entrada.quantidade > 0);
     }
 

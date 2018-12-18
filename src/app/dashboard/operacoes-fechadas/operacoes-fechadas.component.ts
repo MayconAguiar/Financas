@@ -58,6 +58,6 @@ export class OperacoesFechadasComponent implements OnInit {
   }
 
   private obtenhaMesAtual() {
-    return new Date().getMonth() - 1;
+    return new Date().getMonth();
   }
 }

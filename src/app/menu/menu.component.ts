@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  activeTab = 'fechadas';
+
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router) {
@@ -23,18 +25,22 @@ export class MenuComponent implements OnInit {
   }
 
   public fechadas() {
+    this.activeTab = 'fechadas';
     this.router.navigate(['/fechadas']);
   }
 
   public alocacao() {
+    this.activeTab = 'alocacao';
     this.router.navigate(['/alocacao']);
   }
 
   public abertas() {
+    this.activeTab = 'abertas';
     this.router.navigate(['/abertas']);
   }
 
   public importa() {
+    this.activeTab = 'importa';
     this.router.navigate(['/importa']);
   }
 

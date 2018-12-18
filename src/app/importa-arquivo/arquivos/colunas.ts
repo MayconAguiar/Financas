@@ -21,10 +21,20 @@ export class Colunas {
     }
 
     obtenhaNomeDaEmpresa(arrayElement) {
-        let nome = arrayElement[3].split(' ')[0];
+        /// let nome = arrayElement[3].split(' ')[0];
+        let nome = this.retireEspacos(arrayElement[3]);
 
         if (nome.length < 6) {
-            nome = arrayElement[4].split(' ')[0];
+            nome = this.retireEspacos(arrayElement[4]);
+            // nome = arrayElement[4].split(' ')[0];
+        }
+
+        return nome.trim();
+    }
+
+    retireEspacos(nome: string) {
+        while (nome.indexOf('  ') > -1) {
+            nome = nome.replace('  ', ' ');
         }
 
         return nome;
