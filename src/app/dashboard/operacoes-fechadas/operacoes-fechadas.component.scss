@@ -10,11 +10,7 @@
 }
 
 .card {
-    float: left;
-}
-
-h5{
-    font-size: 1rem;
+    float: left;    
 }
 
 .emaberto {
@@ -40,6 +36,10 @@ h5{
     .filtro {        
         width: 50%;        
     }
+
+    .card-title {
+        font-size: 1.3rem !important;
+    }
 }
 
 /*IPAD DEVICE*/
@@ -47,6 +47,10 @@ h5{
 {  
     .filtro {        
         width: 33%;        
+    }
+
+    .card-title {
+        font-size: unset;
     }
 }
 

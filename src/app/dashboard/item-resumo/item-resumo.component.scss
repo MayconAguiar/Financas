@@ -1,3 +1,17 @@
 .card {
     float: left;
+    width: 9rem !important;
+    height: 98px;
 }
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 0.95rem;
+}
+
+.card-text {
+    font-size: 0.75rem;
+} 
