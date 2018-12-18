@@ -13,6 +13,7 @@ export class GraficoDetalhesComponent implements OnInit {
 
   constructor() { }
 
+  p;
   @Input() observableItens: Observable<ItemDashboard[]>;
   itens: ItemDashboard[];
 
