@@ -510,7 +510,7 @@ If the Work includes a "NOTICE" text file as part of its distribution, then any 
 
 END OF TERMS AND CONDITIONS
 
-@angular/common@6.1.10
+@angular/common@7.1.1
 MIT
 MIT
 
@@ -786,19 +786,19 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
-angularfire2@5.1.0
+angularfire2@5.1.1
 MIT
 MIT
 
-@firebase/app@0.3.4
+@firebase/app@0.3.5
 Apache-2.0
 Apache-2.0
 
-@firebase/util@0.2.2
+@firebase/util@0.2.3
 Apache-2.0
 Apache-2.0
 
-firebase@5.5.5
+firebase@5.6.0
 Apache-2.0
 Apache-2.0
 
@@ -806,11 +806,11 @@ Apache-2.0
 Apache-2.0
 Apache-2.0
 
-@firebase/database@0.3.6
+@firebase/database@0.3.7
 Apache-2.0
 Apache-2.0
 
-@firebase/logger@0.1.1
+@firebase/logger@0.1.2
 Apache-2.0
 Apache-2.0
 
@@ -851,7 +851,7 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-@angular/core@6.1.10
+@angular/core@7.1.1
 MIT
 MIT
 
@@ -901,7 +901,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-color-name@1.1.3
+color-name@1.1.4
 MIT
 The MIT License (MIT)
 Copyright (c) 2015 Dmitry Ivanov
@@ -912,6 +912,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@angular/fire@5.1.0
+@angular/fire@5.1.1
 MIT
 MIT
