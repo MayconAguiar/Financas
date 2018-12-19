@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard]   },
   { path: 'cotacaoatual', component: CotacaoAtualComponent,  canActivate: [AuthGuard]   },
   { path: 'importa', component: ImportaComponent,  canActivate: [AuthGuard]   },
-  { path: 'alocacao', component: AlocacaoDeRecursosComponent },
+  { path: 'alocacao', component: AlocacaoDeRecursosComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
