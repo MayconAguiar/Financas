@@ -3,20 +3,8 @@
 //   overflow-y: scroll;
 //   width: 100%;
 // }
-.itensDashboard
-{
-  height: 90%;
-  padding-left: 10%;
-  padding-top: 3%;
-  padding-right: 10%;
-}
-
 .card-body {
   float: left;
-}
-
-.conteudo {
-  height: 400px;
 }
 
 .item {
@@ -26,6 +14,10 @@
 
 .carousel-item.active {
   text-align: center;
+}
+
+.table {
+  font-size: .75rem;
 }
 
 // .carousel-control-next-icon {
@@ -67,3 +59,9 @@
  .carousel-control-next-icon {
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ff0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
  }
+
+ .table td, .table th {
+  // text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
+}

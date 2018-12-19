@@ -1,3 +1,3 @@
 --publicar projeto
-ng build --prod --base-href "https://mayconaguiar.github.io/Financas/
+ng build --prod --base-href "https://mayconaguiar.github.io/Financas/"
 ngh
