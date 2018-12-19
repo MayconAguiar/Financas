@@ -19,6 +19,8 @@ export class GraficoComponent implements OnInit, AfterViewInit {
   @Input() descricoes: string[] = [];
   @Input() valores: number[] = [];
 
+  private valorTotal = 0;
+
   constructor() { }
 
   data: any;
@@ -29,26 +31,42 @@ export class GraficoComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
 
     this.ctx = this.el.nativeElement.getContext('2d');
-
+    this.valorTotal = this.valores.reduce((a, b) => a + b, 0);
+    const that = this;
     const myChart = new Chart(this.ctx, {
       type: 'pie',
       data: {
           labels: this.descricoes,
           datasets: [{
-              label: '# of Votes',
+              label: 'Percentual aplicado:',
               data: this.valores,
               backgroundColor: this.obtenhaCores(this.valores.length),
-              // backgroundColor: [
-              //     'rgba(255, 99, 132, 1)',
-              //     'rgba(54, 162, 235, 1)',
-              //     'rgba(255, 206, 86, 1)'
-              // ],
               borderWidth: 1
           },
         ]
       },
       options: {
-        responsive: false
+        responsive: false,
+        title: {
+          display: true,
+          text: 'Alocação/Distribuição dos Recursos'
+      },
+      tooltips: {
+        callbacks: {
+            label: function(tooltipItem: any, data: any) {
+                let label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                if (label) {
+                    label += 'Valor Aplicado:';
+                }
+
+                label = Math.floor((data.datasets[0].data[tooltipItem.index] / that.valorTotal) * 10000) / 100;
+
+                label += '%';
+                return label;
+            }
+        }
+    }
       }
     });
   }
