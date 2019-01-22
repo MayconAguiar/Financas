@@ -37,8 +37,8 @@ export class OperacoesFechadasComponent implements OnInit {
   public mudouFiltro(mes) {
     this.mesSelecionado = mes;
     this.items =  this.obtenhaItens(Number(mes));
-    console.log('itens sem entrada:');
-    console.log(this.obtenhaSaidasSemEntradas((Number(mes));
+    // console.log('itens sem entrada:');
+    // console.log(this.obtenhaSaidasSemEntradas(Number(mes)));
     this.resumoBehavior.next(new Resumo(this.items));
     this.itensBehavior.next(this.items);
   }
