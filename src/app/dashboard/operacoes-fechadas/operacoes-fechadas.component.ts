@@ -37,6 +37,8 @@ export class OperacoesFechadasComponent implements OnInit {
   public mudouFiltro(mes) {
     this.mesSelecionado = mes;
     this.items =  this.obtenhaItens(Number(mes));
+    console.log('itens sem entrada:');
+    console.log(this.obtenhaSaidasSemEntradas((Number(mes));
     this.resumoBehavior.next(new Resumo(this.items));
     this.itensBehavior.next(this.items);
   }
@@ -45,6 +47,9 @@ export class OperacoesFechadasComponent implements OnInit {
     this.servico.obtenhaDashBoards().subscribe(itens => {
       this.original = itens;
       this.items =  this.obtenhaItens(this.mesSelecionado);
+      console.log(this.items);
+      console.log('itens sem entrada:');
+      console.log(this.obtenhaSaidasSemEntradas(this.mesSelecionado));
       this.itensBehavior.next(this.items);
       this.resumoBehavior.next(new Resumo(this.items));
     });
@@ -54,6 +59,13 @@ export class OperacoesFechadasComponent implements OnInit {
     return this.original
     .filter(x =>  {
       return x.saida.ObtenhaData() !== undefined && x.saida.ObtenhaData().getMonth() === Number(mes);
+    });
+  }
+
+  private obtenhaSaidasSemEntradas(mes) {
+    return this.original
+    .filter(x =>  {
+      return x.saida.ObtenhaData() !== undefined && !x.entrada.existeValor() && x.saida.ObtenhaData().getMonth() === Number(mes);
     });
   }
 

@@ -22,7 +22,7 @@ export class ResumoIndividual  {
     }
 
     private calcule() {
-        if (this.item.saida !== undefined && this.item.saida.existeValor()) {
+        if (this.item.saida !== undefined && this.item.entrada.existeValor() && this.item.saida.existeValor()) {
             const totalEntrada = this.item.entrada.ValorMedio() * this.item.saida.quantidade;
             this.totalVenda = this.item.saida.ValorMedio() * this.item.saida.quantidade;
             this.lucroOuPrejuizo = this.totalVenda - totalEntrada;

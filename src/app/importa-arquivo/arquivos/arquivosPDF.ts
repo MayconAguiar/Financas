@@ -132,7 +132,8 @@ export class ArquivosPDF {
     }
 
     ehElementoValido(item: string) {
-        return item.trim() !== '';
+        //return item.trim() !== '';
+        return true;
     }
 
     obtenhaListaFormatada(lista: string[]) {
@@ -140,15 +141,16 @@ export class ArquivosPDF {
         const novaLista = [];
         const indiceData = lista.indexOf('Data pregão') + 1;
         let codigo = Number(lista[indiceData].replace(/\D/g, ''));
+        const tituloColuna = 'Q;Negociação;C/V;Tipo mercado;Prazo;Especificação do título;' +
+        'Obs. (*);Quantidade;Preço / Ajuste;Valor Operação / Ajuste;D/C';
 
+        const descricoesColunas = lista[lista.indexOf(tituloColuna)].split(';');
         const data = lista[indiceData];
-
 
         for (let index = 0; index < lista.length; index++) {
             const element = lista[index];
             const arrayElement = element.split(';');
             const tipo = this.ObtenhaTipo(element);
-
 
             if (tipo === Tipos.NAO_ATENDIDO) {
                 // console.log('tipo não atendido:');
@@ -157,7 +159,7 @@ export class ArquivosPDF {
             }
 
             const itemarquivo = new ItemArquivo();
-            const colunas = new Colunas(arrayElement.length);
+            const colunas = new Colunas(arrayElement, descricoesColunas);
 
             codigo += 1;
             itemarquivo.natureza = arrayElement[colunas.natureza];
@@ -165,18 +167,17 @@ export class ArquivosPDF {
             itemarquivo.data = this.obtenhaDataFormatada(data);
             itemarquivo.origem = arrayElement;
             itemarquivo.tipo = tipo;
-
             // const ultimoElemento = arrayElement.length - 1;
 
             switch (tipo) {
                 case Tipos.SWING_TRADE:
-                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa(arrayElement);
+                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa();
                     itemarquivo.quantidade = Number(arrayElement[colunas.quantidade].replace(/\D/g, ''));
                     itemarquivo.preco = parseFloat(arrayElement[colunas.preço].replace(/,/g, '.'));
 
                     break;
                 case Tipos.OPCOES:
-                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa(arrayElement);
+                    itemarquivo.empresa = colunas.obtenhaNomeDaEmpresa();
                     itemarquivo.quantidade = Number(arrayElement[colunas.quantidade].replace(/\D/g, ''));
                     itemarquivo.preco = parseFloat(arrayElement[colunas.preço].replace(/,/g, '.'));
                     break;
@@ -188,7 +189,6 @@ export class ArquivosPDF {
             // if (itemarquivo.empresa === 'PORTOBELLO') {
                 novaLista.push(itemarquivo);
             // }
-
         }
         return novaLista;
     }
@@ -203,6 +203,9 @@ export class ArquivosPDF {
         const linha = listaItens.join(';');
         listaDeLinhas.push(linha);
 
+    }
+    private ehColunas(linha: string) {
+        return linha.indexOf('Especificação do título') > -1;
     }
 
     private ObtenhaTipo(linha: string) {
