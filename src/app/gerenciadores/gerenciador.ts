@@ -33,6 +33,9 @@ export class Gerenciador {
         const that = this;
         chaves.forEach(chave => {
 
+            // if (chave !== 'BRADESCO') {
+            //   return;
+            // }
             const empresa = chave;
 
             // let itemdashboard = new ItemDashboard();
@@ -86,15 +89,18 @@ export class Gerenciador {
             arquivo.empresa = x.empresa;
             arquivo.data = x.data;
             arquivo.quantidade += x.quantidade;
-            arquivo.preco += x.preco;
+            arquivo.valorTotal += x.quantidade * x.preco;
+            // valor médio
+            arquivo.preco = arquivo.valorTotal / arquivo.quantidade;
             arquivo.natureza = x.natureza;
             arquivo.tipo = x.tipo;
             arquivo.count += 1;
         });
 
         if (arquivo.count > 1) {
-            arquivo.preco = arquivo.preco / arquivo.count;
-            arquivo.count = 1;
+        //     // arquivo.preco = arquivo.preco / arquivo.count;
+        //     arquivo.preco = arquivo.valorTotal / arquivo.quantidade;
+             arquivo.count = 1;
         }
 
         return arquivo;

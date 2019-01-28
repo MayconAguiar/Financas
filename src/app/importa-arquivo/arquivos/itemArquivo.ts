@@ -11,6 +11,7 @@ export class ItemArquivo {
     tipo: Tipos;
     count = 0;
     origem;
+    valorTotal = 0;
 
     public obtenhaNovo() {
         const item = new  ItemArquivo();
