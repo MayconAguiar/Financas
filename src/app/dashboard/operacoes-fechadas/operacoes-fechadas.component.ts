@@ -15,6 +15,7 @@ export class OperacoesFechadasComponent implements OnInit {
   constructor(private servico: DashboardService) {
     this.mesSelecionado = this.obtenhaMesAtual();
     this.anoSelecionado = this.obtenhaAnoAtual();
+    this.tipoSelecionado = 'swing trade';
   }
 
   itemsAsObservable: Observable<ItemDashboard[]>;
@@ -25,6 +26,7 @@ export class OperacoesFechadasComponent implements OnInit {
 
   mesSelecionado: number;
   anoSelecionado: number;
+  tipoSelecionado: string;
   itensBehavior = new BehaviorSubject<ItemDashboard[]>([]);
   itensAbertoBehavior = new BehaviorSubject<ItemDashboard[]>([]);
   resumoBehavior = new BehaviorSubject<Resumo>(null);
@@ -39,7 +41,8 @@ export class OperacoesFechadasComponent implements OnInit {
   public mudouFiltro(mesAno) {
     this.mesSelecionado = mesAno[0];
     this.anoSelecionado = Number(mesAno[1]);
-    this.items =  this.obtenhaItens(Number(this.mesSelecionado), this.anoSelecionado);
+    this.tipoSelecionado = mesAno[2];
+    this.items =  this.obtenhaItens(Number(this.mesSelecionado), this.anoSelecionado, this.tipoSelecionado);
     // console.log('itens sem entrada:');
     // console.log(this.obtenhaSaidasSemEntradas(Number(mes)));
     this.resumoBehavior.next(new Resumo(this.items));
@@ -49,7 +52,7 @@ export class OperacoesFechadasComponent implements OnInit {
   private Inicie() {
     this.servico.obtenhaDashBoards().subscribe(itens => {
       this.original = itens;
-      this.items =  this.obtenhaItens(this.mesSelecionado, this.anoSelecionado);
+      this.items =  this.obtenhaItens(this.mesSelecionado, this.anoSelecionado, this.tipoSelecionado);
       console.log(this.items);
       console.log('itens sem entrada:');
       console.log(this.obtenhaSaidasSemEntradas(this.mesSelecionado, this.anoSelecionado));
@@ -58,12 +61,16 @@ export class OperacoesFechadasComponent implements OnInit {
     });
   }
 
-  private obtenhaItens(mes, ano) {
+  private obtenhaItens(mes, ano, tipo) {
+    // const teste = this.original.filter(x => x.entrada.papeis[0].empresa === 'BRASIL');
+
     return this.original
     .filter(x =>  {
       return x.saida.ObtenhaData() !== undefined
       && x.saida.ObtenhaData().getMonth() === Number(mes)
-      && x.saida.ObtenhaData().getFullYear() === ano;
+      && x.saida.ObtenhaData().getFullYear() === ano
+      && (tipo === 'swing trade' ? x.entrada.data !==  x.saida.data :
+      x.entrada.data ===  x.saida.data);
     });
   }
 

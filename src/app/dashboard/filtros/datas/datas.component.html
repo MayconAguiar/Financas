@@ -2,12 +2,22 @@
   <input type="range" min="1" max="12" value="atual" step="1" (change)="mudou($event.target.value)">
 </div> -->
 
-<div class="conteudoAno">
+<!-- <div class="conteudoAno">
   <label for="formControlRange">Filtre por ano</label>
   <div class ="input-label-inline">
     <input type="range" min="2018" max="2019" value="{{anoatual}}" step="1" (change)="mudouAno($event.target.value)" class="form-control-range" id="formControlRange">
     <label class="text-capitalize ml-1" >{{ anoatual }}</label>
   </div>
+</div> -->
+<div class="ano">
+  Ano: <select class='select-option' (change)="mudouAno($event.target.value)">
+    <option class='option' *ngFor='let option of anos' [value]="option" [selected]="option == anoatual">{{option}}</option>
+  </select>
+</div>
+<div class="ano">
+  Tipo: <select class='select-option' (change)="mudouTipo($event.target.value)">
+    <option class='option' *ngFor='let option of tipos' [value]="option" [selected]="option == tipoatual">{{option}}</option>
+  </select>
 </div>
 
 <div class="conteudo">
