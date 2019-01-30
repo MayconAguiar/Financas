@@ -14,14 +14,11 @@ export class DatasComponent implements OnInit {
   descricao = '';
   meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-  @Output() mudoumes: EventEmitter<number> = new EventEmitter();
+  @Output() mudoumes: EventEmitter<any> = new EventEmitter();
   @Input() inicial = 0;
+  @Input() anoatual = 2017;
 
   ngOnInit() {
-    // this.atual = new Date().getMonth() - 1;
-    // this.atual = this.atual === -1 ? 11 : this.atual;
-    // this.descricao = this.meses[this.atual];
-    // this.mudoumes.emit(this.atual);
     this.atual = this.inicial;
     this.descricao = this.meses[this.atual];
   }
@@ -31,8 +28,15 @@ export class DatasComponent implements OnInit {
   }
 
   mudou(mes) {
+    this.atual = mes;
     this.descricao = this.meses[mes];
-    this.mudoumes.emit(mes);
+    this.mudoumes.emit([mes, this.anoatual ]);
+  }
+
+  mudouAno(ano) {
+    this.anoatual = ano;
+    // const that = this;
+    this.mudoumes.emit([this.atual, ano ]);
   }
 
 }

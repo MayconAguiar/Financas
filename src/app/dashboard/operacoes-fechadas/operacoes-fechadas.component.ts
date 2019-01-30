@@ -14,6 +14,7 @@ export class OperacoesFechadasComponent implements OnInit {
 
   constructor(private servico: DashboardService) {
     this.mesSelecionado = this.obtenhaMesAtual();
+    this.anoSelecionado = this.obtenhaAnoAtual();
   }
 
   itemsAsObservable: Observable<ItemDashboard[]>;
@@ -23,6 +24,7 @@ export class OperacoesFechadasComponent implements OnInit {
   exibirDetalhesGeral = false;
 
   mesSelecionado: number;
+  anoSelecionado: number;
   itensBehavior = new BehaviorSubject<ItemDashboard[]>([]);
   itensAbertoBehavior = new BehaviorSubject<ItemDashboard[]>([]);
   resumoBehavior = new BehaviorSubject<Resumo>(null);
@@ -34,9 +36,10 @@ export class OperacoesFechadasComponent implements OnInit {
     this.Inicie();
   }
 
-  public mudouFiltro(mes) {
-    this.mesSelecionado = mes;
-    this.items =  this.obtenhaItens(Number(mes));
+  public mudouFiltro(mesAno) {
+    this.mesSelecionado = mesAno[0];
+    this.anoSelecionado = Number(mesAno[1]);
+    this.items =  this.obtenhaItens(Number(this.mesSelecionado), this.anoSelecionado);
     // console.log('itens sem entrada:');
     // console.log(this.obtenhaSaidasSemEntradas(Number(mes)));
     this.resumoBehavior.next(new Resumo(this.items));
@@ -46,30 +49,38 @@ export class OperacoesFechadasComponent implements OnInit {
   private Inicie() {
     this.servico.obtenhaDashBoards().subscribe(itens => {
       this.original = itens;
-      this.items =  this.obtenhaItens(this.mesSelecionado);
+      this.items =  this.obtenhaItens(this.mesSelecionado, this.anoSelecionado);
       console.log(this.items);
       console.log('itens sem entrada:');
-      console.log(this.obtenhaSaidasSemEntradas(this.mesSelecionado));
+      console.log(this.obtenhaSaidasSemEntradas(this.mesSelecionado, this.anoSelecionado));
       this.itensBehavior.next(this.items);
       this.resumoBehavior.next(new Resumo(this.items));
     });
   }
 
-  private obtenhaItens(mes) {
+  private obtenhaItens(mes, ano) {
     return this.original
     .filter(x =>  {
-      return x.saida.ObtenhaData() !== undefined && x.saida.ObtenhaData().getMonth() === Number(mes);
+      return x.saida.ObtenhaData() !== undefined
+      && x.saida.ObtenhaData().getMonth() === Number(mes)
+      && x.saida.ObtenhaData().getFullYear() === ano;
     });
   }
 
-  private obtenhaSaidasSemEntradas(mes) {
+  private obtenhaSaidasSemEntradas(mes, ano) {
     return this.original
     .filter(x =>  {
-      return x.saida.ObtenhaData() !== undefined && !x.entrada.existeValor() && x.saida.ObtenhaData().getMonth() === Number(mes);
+      return x.saida.ObtenhaData() !== undefined && !x.entrada.existeValor()
+      && x.saida.ObtenhaData().getMonth() === Number(mes)
+      && x.saida.ObtenhaData().getMonth() === ano;
     });
   }
 
   private obtenhaMesAtual() {
     return new Date().getMonth();
+  }
+
+  private obtenhaAnoAtual() {
+    return new Date().getFullYear();
   }
 }

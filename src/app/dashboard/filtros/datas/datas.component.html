@@ -2,9 +2,17 @@
   <input type="range" min="1" max="12" value="atual" step="1" (change)="mudou($event.target.value)">
 </div> -->
 
+<div class="conteudoAno">
+  <label for="formControlRange">Filtre por ano</label>
+  <div class ="input-label-inline">
+    <input type="range" min="2018" max="2019" value="{{anoatual}}" step="1" (change)="mudouAno($event.target.value)" class="form-control-range" id="formControlRange">
+    <label class="text-capitalize ml-1" >{{ anoatual }}</label>
+  </div>
+</div>
+
 <div class="conteudo">
   <label for="formControlRange">Filtre por mês</label>
-  <div class ="input-label-inline">    
+  <div class ="input-label-inline">
     <input type="range" min="0" max="11" value="{{atual}}" step="1" (change)="mudou($event.target.value)" class="form-control-range" id="formControlRange">
     <label class="text-capitalize ml-1" >{{ descricao }}</label>
   </div>

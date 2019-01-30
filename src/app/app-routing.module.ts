@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { ImportaComponent } from './importa-arquivo/importa/importa.component';
 import { CotacaoAtualComponent } from './cotacao-atual/cotacao-atual.component';
 import { AuthGuard } from './authGuard';
@@ -18,7 +17,6 @@ const routes: Routes = [
     ] },
   { path: 'fechadas', component: OperacoesFechadasComponent,  canActivate: [AuthGuard]   },
   { path: 'abertas', component: OperacoesAbertasComponent,  canActivate: [AuthGuard]   },
-  { path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard]   },
   { path: 'cotacaoatual', component: CotacaoAtualComponent,  canActivate: [AuthGuard]   },
   { path: 'importa', component: ImportaComponent,  canActivate: [AuthGuard]   },
   { path: 'alocacao', component: AlocacaoDeRecursosComponent, canActivate: [AuthGuard] },
