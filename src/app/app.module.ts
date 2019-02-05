@@ -23,6 +23,8 @@ import { AlocacaoDeRecursosComponent } from './alocacao-de-recursos/alocacao-de-
 import { GraficoDetalhesComponent } from './grafico-detalhes/grafico-detalhes.component';
 import { ComumModule } from './comum/comum.module';
 import { CommonModule } from '@angular/common';
+import { GraficoEvolucaoPatrimonialComponent } from './grafico-evolucao-patrimonial/grafico-evolucao-patrimonial.component';
+import { EvolucaoPatrimonialComponent } from './evolucao-patrimonial/evolucao-patrimonial.component';
 
 registerLocaleData(localeBR);
 
@@ -34,7 +36,9 @@ registerLocaleData(localeBR);
     MenuComponent,
     GraficoComponent,
     AlocacaoDeRecursosComponent,
-    GraficoDetalhesComponent
+    GraficoDetalhesComponent,
+    GraficoEvolucaoPatrimonialComponent,
+    EvolucaoPatrimonialComponent
   ],
   imports: [
     CommonModule,

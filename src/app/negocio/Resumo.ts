@@ -5,6 +5,7 @@ export class Resumo  {
     lucroOuPrejuizo = 0;
     lucroLiquido = 0;
     totalVenda = 0;
+    totalEntrada = 0;
     impostoDevido = 0;
     impostoRetido = 0;
     impostoAPagar = 0;
@@ -22,6 +23,7 @@ export class Resumo  {
             //// this.taxas += x.resumo.taxas;
             this.lucroOuPrejuizo += x.resumo.lucroOuPrejuizo;
             this.totalVenda += x.resumo.totalVenda;
+            this.totalEntrada += x.resumo.totalEntrada;
             this.taxaDeLiquidacao += x.resumo.taxaDeLiquidacao;
             this.corretagem += x.resumo.corretagem;
             this.emolumentos += x.resumo.emolumentos;

@@ -6,6 +6,7 @@ import { MatchMediaService } from '../match-media.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatasComponent } from './filtros/datas/datas.component';
 
 @NgModule({
   imports: [
@@ -15,9 +16,10 @@ import { ReactiveFormsModule } from '@angular/forms';
      ReactiveFormsModule
   ],
   declarations: [
+    DatasComponent
   ],
   exports: [
-     NgxPaginationModule
+     NgxPaginationModule, DatasComponent
   ],
   providers: [ DashboardService, MatchMediaService, AngularFireDatabase ]
 })

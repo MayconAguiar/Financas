@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { DatasComponent } from './filtros/datas/datas.component';
 import { GeralComponent } from './filtros/geral/geral.component';
 import { TipoItemDashboardComponent } from './filtros/tipo-item-dashboard/tipo-item-dashboard.component';
 import { TiposComponent } from './filtros/tipos/tipos.component';
@@ -26,7 +25,6 @@ import { OperacoesAbertasComponent } from './operacoes-abertas/operacoes-abertas
 
   // componente
   declarations: [
-    DatasComponent,
     GeralComponent,
     TipoItemDashboardComponent,
     TiposComponent,

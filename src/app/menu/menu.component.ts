@@ -34,6 +34,11 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/alocacao']);
   }
 
+  public evolucao() {
+    this.activeTab = 'evolucao';
+    this.router.navigate(['/evolucao']);
+  }
+
   public abertas() {
     this.activeTab = 'abertas';
     this.router.navigate(['/abertas']);

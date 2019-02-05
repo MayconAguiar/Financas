@@ -18,6 +18,8 @@ export class DatasComponent implements OnInit {
 
   @Output() mudoumes: EventEmitter<any> = new EventEmitter();
   @Input() inicial = 0;
+  @Input() exibirMes = true;
+
   @Input() anoatual = 2017;
   @Input() tipoatual = 'swing trade';
 

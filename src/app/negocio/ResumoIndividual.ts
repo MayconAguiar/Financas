@@ -13,6 +13,7 @@ export class ResumoIndividual  {
     lucroOuPrejuizo = 0;
     totalVenda = 0;
     count = 0;
+    totalEntrada = 0;
 
     item: ItemDashboard;
 
@@ -23,10 +24,10 @@ export class ResumoIndividual  {
 
     private calcule() {
         if (this.item.saida !== undefined && this.item.entrada.existeValor() && this.item.saida.existeValor()) {
-            const totalEntrada = this.item.entrada.ValorMedio() * this.item.saida.quantidade;
+            this.totalEntrada = this.item.entrada.ValorMedio() * this.item.saida.quantidade;
             this.totalVenda = this.item.saida.ValorMedio() * this.item.saida.quantidade;
-            this.lucroOuPrejuizo = this.totalVenda - totalEntrada;
-            const valorDaOperacao = (totalEntrada + this.totalVenda);
+            this.lucroOuPrejuizo = this.totalVenda - this.totalEntrada;
+            const valorDaOperacao = (this.totalEntrada + this.totalVenda);
             this.taxaDeLiquidacao = valorDaOperacao * (0.0275 / 100);
             this.emolumentos = valorDaOperacao * 0.00004829;
             const iprfretido = (this.totalVenda * 0.00005);

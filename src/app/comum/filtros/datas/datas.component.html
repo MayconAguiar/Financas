@@ -14,13 +14,13 @@
     <option class='option' *ngFor='let option of anos' [value]="option" [selected]="option == anoatual">{{option}}</option>
   </select>
 </div>
-<div class="ano">
+<div class="ano" *ngIf="tipoatual!=='TODOS'">
   Tipo: <select class='select-option' (change)="mudouTipo($event.target.value)">
     <option class='option' *ngFor='let option of tipos' [value]="option" [selected]="option == tipoatual">{{option}}</option>
   </select>
 </div>
 
-<div class="conteudo">
+<div class="conteudo" *ngIf="exibirMes">
   <label for="formControlRange">Filtre por mês</label>
   <div class ="input-label-inline">
     <input type="range" min="0" max="11" value="{{atual}}" step="1" (change)="mudou($event.target.value)" class="form-control-range" id="formControlRange">

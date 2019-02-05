@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { OperacoesFechadasComponent } from './dashboard/operacoes-fechadas/operacoes-fechadas.component';
 import { OperacoesAbertasComponent } from './dashboard/operacoes-abertas/operacoes-abertas.component';
+import { EvolucaoPatrimonialComponent } from './evolucao-patrimonial/evolucao-patrimonial.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'fechadas', component: OperacoesFechadasComponent,  canActivate: [AuthGuard]   },
   { path: 'abertas', component: OperacoesAbertasComponent,  canActivate: [AuthGuard]   },
   { path: 'cotacaoatual', component: CotacaoAtualComponent,  canActivate: [AuthGuard]   },
+  { path: 'evolucao', component: EvolucaoPatrimonialComponent,  canActivate: [AuthGuard]   },
   { path: 'importa', component: ImportaComponent,  canActivate: [AuthGuard]   },
   { path: 'alocacao', component: AlocacaoDeRecursosComponent, canActivate: [AuthGuard] },
 ];
